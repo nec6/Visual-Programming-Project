@@ -28,12 +28,24 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(1870, 1410);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(175, 123);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Exit";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // OrderScreen
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.button1);
             this.Name = "OrderScreen";
             this.Size = new System.Drawing.Size(2048, 1536);
             this.ResumeLayout(false);
@@ -41,5 +53,7 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.Button button1;
     }
 }

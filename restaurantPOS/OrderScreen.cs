@@ -16,5 +16,10 @@ namespace restaurantPOS
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ViewChanger.ChangeView(new LoginScreen()); // Go back to login screen when the button is clicked
+        }
     }
 }
