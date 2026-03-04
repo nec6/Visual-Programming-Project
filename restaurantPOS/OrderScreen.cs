@@ -15,11 +15,44 @@ namespace restaurantPOS
         public OrderScreen()
         {
             InitializeComponent();
+            this.Load += OrderScreen_Load;
+        }
+
+        private void OrderScreen_Load(object sender, EventArgs e)
+        {
+             LoadCategoryButtons(DatabaseHandler.GetCategoryNames()); /////// ADD LIST HERE !!!!!!!!!!!!!
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             ViewChanger.ChangeView(new LoginScreen()); // Go back to login screen when the button is clicked
+        }
+
+        private void LoadCategoryButtons(List<string> categories)
+        {
+            menuCategoryPanel.Controls.Clear();
+
+            foreach (string category in categories)
+            {
+                Button button = new Button
+                {
+                    Text = category,
+                    Width = 120,
+                    Height = 60,
+                    Margin = new Padding(5)
+                };
+
+                button.Click += CategoryButton_Click;
+
+                menuCategoryPanel.Controls.Add(button);
+
+            }
+
+        }
+
+        private void CategoryButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
