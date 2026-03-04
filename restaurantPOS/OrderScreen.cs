@@ -20,7 +20,7 @@ namespace restaurantPOS
 
         private void OrderScreen_Load(object sender, EventArgs e)
         {
-             LoadCategoryButtons(DatabaseHandler.GetCategoryNames()); /////// ADD LIST HERE !!!!!!!!!!!!!
+             LoadCategoryButtons(DatabaseHandler.GetCategoryNames());
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -28,7 +28,7 @@ namespace restaurantPOS
             ViewChanger.ChangeView(new LoginScreen()); // Go back to login screen when the button is clicked
         }
 
-        private void LoadCategoryButtons(List<string> categories)
+        private void LoadCategoryButtons(HashSet<string> categories)
         {
             menuCategoryPanel.Controls.Clear();
 
@@ -37,9 +37,10 @@ namespace restaurantPOS
                 Button button = new Button
                 {
                     Text = category,
-                    Width = 120,
-                    Height = 60,
-                    Margin = new Padding(5)
+                    Tag = category,
+                    Width = 240,
+                    Height = 120,
+                    Margin = new Padding(20)
                 };
 
                 button.Click += CategoryButton_Click;
@@ -51,6 +52,34 @@ namespace restaurantPOS
         }
 
         private void CategoryButton_Click(object sender, EventArgs e)
+        {
+            Button clickedButton = (Button)sender;
+            string categorySelected = (string) clickedButton.Tag;
+            LoadMenuItems(DatabaseHandler.GetMenuItems(categorySelected));
+        }
+
+        private void LoadMenuItems(List<string> menuItems)
+        {
+            menuItemsPanel.Controls.Clear();
+
+            foreach(string item in menuItems)
+            {
+                Button button = new Button
+                {
+                    Text = item,
+                    Tag = item,
+                    Width = 200,
+                    Height = 100,
+                    Margin = new Padding(20)
+                };
+
+                button.Click += MenuItemButton_Click;
+
+                menuItemsPanel.Controls.Add(button);
+            }
+        }
+
+        private void MenuItemButton_Click(object sender, EventArgs e)
         {
 
         }

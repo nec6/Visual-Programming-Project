@@ -84,11 +84,11 @@ namespace restaurantPOS
             command.ExecuteNonQuery();
         }
 
-        public static List<string> GetCategoryNames()
+        public static HashSet<string> GetCategoryNames()
         {
-            List<string> categories = new List<string>();
+            HashSet<string> categories = new HashSet<string>(); // HashSet used so that duplicate categories are not created.
 
-            using var connection = new SqliteConnection("Data Source =pos.db");
+            using var connection = new SqliteConnection("Data Source=pos.db");
             connection.Open();
 
             using var command = connection.CreateCommand();
@@ -105,6 +105,27 @@ namespace restaurantPOS
             }
 
             return categories;
+        }
+
+        public static List<string> GetMenuItems(string category)
+        {
+            List<string> menuItems = new List<string>();
+
+            using var connection = new SqliteConnection("Data Source=pos.db");
+            connection.Open();
+
+            string sqlString = "SELECT itemName FROM MenuItems WHERE category=@category";
+
+            using SqliteCommand command = new SqliteCommand(sqlString, connection);
+            command.Parameters.AddWithValue("@category", category);
+
+            using var databaseReader = command.ExecuteReader();
+            while (databaseReader.Read())
+            {
+                menuItems.Add(databaseReader.GetString(0));
+            }
+
+            return menuItems;
         }
     }
 }
