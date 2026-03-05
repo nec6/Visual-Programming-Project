@@ -12,7 +12,7 @@ namespace restaurantPOS
 {
     public partial class OrderScreen : UserControl
     {
-        public OrderScreen()
+        public OrderScreen(int orderNum, int tableNum)
         {
             InitializeComponent();
             this.Load += OrderScreen_Load;
@@ -82,7 +82,9 @@ namespace restaurantPOS
 
         private void MenuItemButton_Click(object sender, EventArgs e)
         {
-
+            Button clickedButton = (Button)sender;
+            string itemToAdd = (string) clickedButton.Tag;
+            DatabaseHandler.AddItemToOrder(1, itemToAdd, 1); // CHNAGE THIS TO TAKE TABLE NUM AND ORDER NUM, NOT JUST 1 !!!!!!!
         }
     }
 }

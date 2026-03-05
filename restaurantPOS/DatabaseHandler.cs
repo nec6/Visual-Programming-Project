@@ -151,7 +151,7 @@ namespace restaurantPOS
             return menuItems;
         }
         
-        public static int OrderExists(int employeeID, int tableNum)
+        public static int OrderExists(int tableNum) // Check if order exists for given table.
         {
             using var connection = new SqliteConnection("Data Source=pos.db");
             connection.Open();
@@ -180,7 +180,27 @@ namespace restaurantPOS
         }
         public static void AddItemToOrder(int tableNum, string menuItemName, int orderNum)
         {
-             
+            using var connection = new SqliteConnection("Data Source=pos.db");
+            connection.Open();
+
+            string sqlString = "SELECT price FROM MenuItems WHERE itemName = @itemName";
+
+            using SqliteCommand command = new SqliteCommand(sqlString, connection);
+            command.Parameters.AddWithValue("itemName", menuItemName);
+
+            decimal price = Convert.ToDecimal(command.ExecuteScalar());
+            int quantity = 1;
+
+            sqlString = "INSERT INTO orderItems (orderID, menuItem, quantity, unitPrice, itemTotalPrice) VALUES (@orderID, @menuItem, @quantity, @price, @totalPrice)";
+
+            using SqliteCommand command2 = new SqliteCommand(sqlString, connection);
+            command2.Parameters.AddWithValue("@orderID", orderNum);
+            command2.Parameters.AddWithValue("@menuItem", menuItemName);
+            command2.Parameters.AddWithValue("@quantity", quantity);
+            command2.Parameters.AddWithValue("@price", price);
+            command2.Parameters.AddWithValue("@totalPrice", (quantity * price));
+            command2.ExecuteNonQuery();
+
         }
 
 
