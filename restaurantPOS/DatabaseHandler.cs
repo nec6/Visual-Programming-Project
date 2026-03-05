@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Text;
 using Microsoft.Data.Sqlite;
 
@@ -14,7 +15,7 @@ namespace restaurantPOS
 
             var command = connection.CreateCommand();
 
-            command.CommandText =
+            command.CommandText = // Employees Table
                 @"
                 CREATE TABLE IF NOT EXISTS Employees (
                     employeeID INTEGER PRIMARY KEY,
@@ -24,7 +25,7 @@ namespace restaurantPOS
                 ";
             command.ExecuteNonQuery();
 
-            command.CommandText =
+            command.CommandText = // Menu Items Table
                 @"
                 CREATE TABLE IF NOT EXISTS MenuItems (
                     menuItemID INTEGER PRIMARY KEY,
@@ -36,18 +37,19 @@ namespace restaurantPOS
                 ";
             command.ExecuteNonQuery();
 
-            command.CommandText =
+            command.CommandText = // Orders Table
                 @"
-                CREATE TABLE IF NOT EXISTS Orders (
+                CREATE TABLE IF NOT EXISTS Orders ( 
                 orderID INTEGER PRIMARY KEY,
                 employeeID INTEGER,
+                tableNumber INTEGER,
                 status TEXT,
                 total DECIMAL(12, 2)
                 );
                 ";
             command.ExecuteNonQuery();
 
-            command.CommandText =
+            command.CommandText = // Ordered Items Table
                 @"
                 CREATE TABLE IF NOT EXISTS orderItems (
                 orderItemID INTEGER PRIMARY KEY,
@@ -148,5 +150,39 @@ namespace restaurantPOS
 
             return menuItems;
         }
+        
+        public static int OrderExists(int employeeID, int tableNum)
+        {
+            using var connection = new SqliteConnection("Data Source=pos.db");
+            connection.Open();
+
+            string sqlString = "SELECT EXISTS (SELECT 1 FROM Orders WHERE tableNumber = @table AND status = 'Open')";
+
+            using SqliteCommand command = new SqliteCommand(sqlString, connection);
+            command.Parameters.AddWithValue("@table", tableNum);
+
+            int queryResult = Convert.ToInt32((long) command.ExecuteScalar());
+
+            return queryResult;
+        }
+
+        public static void CreateOrder(int employeeID, int tableNum) // Call this when OrderExists returns value indicating no open order found.
+        {
+            using var connection = new SqliteConnection("Data Source=pos.db");
+            connection.Open();
+
+            string sqlString = "INSERT INTO Orders (employeeID, tableNumber, status) VALUES (@employeeID, @tableNum, 'Open')";
+
+            using SqliteCommand command = new SqliteCommand(sqlString, connection);
+            command.Parameters.AddWithValue("@employeeID", employeeID);
+            command.Parameters.AddWithValue("@tableNum", tableNum);
+            command.ExecuteNonQuery();
+        }
+        public static void AddItemToOrder(int tableNum, string menuItemName, int orderNum)
+        {
+             
+        }
+
+
     }
 }

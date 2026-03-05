@@ -20,7 +20,8 @@ namespace restaurantPOS
 
         private void OrderScreen_Load(object sender, EventArgs e)
         {
-             LoadCategoryButtons(DatabaseHandler.GetCategoryNames());
+            LoadCategoryButtons(DatabaseHandler.GetCategoryNames());
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
