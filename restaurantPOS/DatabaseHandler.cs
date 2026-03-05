@@ -22,7 +22,6 @@ namespace restaurantPOS
                     role TEXT NOT NULL
                     );
                 ";
-
             command.ExecuteNonQuery();
 
             command.CommandText =
@@ -35,9 +34,31 @@ namespace restaurantPOS
                     liquorTax BOOLEAN
                     );
                 ";
-
             command.ExecuteNonQuery();
 
+            command.CommandText =
+                @"
+                CREATE TABLE IF NOT EXISTS Orders (
+                orderID INTEGER PRIMARY KEY,
+                employeeID INTEGER,
+                status TEXT,
+                total DECIMAL(12, 2)
+                );
+                ";
+            command.ExecuteNonQuery();
+
+            command.CommandText =
+                @"
+                CREATE TABLE IF NOT EXISTS orderItems (
+                orderItemID INTEGER PRIMARY KEY,
+                orderID INTEGER,
+                menuItem TEXT,
+                quantity INTEGER,
+                unitPrice DECIMAL(6, 2),
+                itemTotalPrice DECIMAL(8, 2)
+                );
+                ";
+            command.ExecuteNonQuery();
         }
 
         public static void addEmployee(int employeeID, string name, string role)
@@ -84,9 +105,9 @@ namespace restaurantPOS
             command.ExecuteNonQuery();
         }
 
-        public static HashSet<string> GetCategoryNames()
+        public static List<string> GetCategoryNames()
         {
-            HashSet<string> categories = new HashSet<string>(); // HashSet used so that duplicate categories are not created.
+            List<string> categories = new List<string>(); // HashSet used so that duplicate categories are not created.
 
             using var connection = new SqliteConnection("Data Source=pos.db");
             connection.Open();
@@ -94,7 +115,7 @@ namespace restaurantPOS
             using var command = connection.CreateCommand();
             command.CommandText =
                 @"
-                SELECT category 
+                SELECT DISTINCT category 
                 FROM MenuItems;
                 ";
 

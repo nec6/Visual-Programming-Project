@@ -31,6 +31,7 @@
             button1 = new Button();
             menuCategoryPanel = new FlowLayoutPanel();
             menuItemsPanel = new FlowLayoutPanel();
+            orderedItemsPanel = new FlowLayoutPanel();
             SuspendLayout();
             // 
             // button1
@@ -61,10 +62,18 @@
             menuItemsPanel.Size = new Size(972, 1626);
             menuItemsPanel.TabIndex = 2;
             // 
+            // orderedItemsPanel
+            // 
+            orderedItemsPanel.Location = new Point(112, 130);
+            orderedItemsPanel.Name = "orderedItemsPanel";
+            orderedItemsPanel.Size = new Size(560, 1626);
+            orderedItemsPanel.TabIndex = 3;
+            // 
             // OrderScreen
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(orderedItemsPanel);
             Controls.Add(menuItemsPanel);
             Controls.Add(menuCategoryPanel);
             Controls.Add(button1);
@@ -80,5 +89,6 @@
         private System.Windows.Forms.Button button1;
         private FlowLayoutPanel menuCategoryPanel;
         private FlowLayoutPanel menuItemsPanel;
+        private FlowLayoutPanel orderedItemsPanel;
     }
 }

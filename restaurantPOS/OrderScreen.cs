@@ -28,7 +28,7 @@ namespace restaurantPOS
             ViewChanger.ChangeView(new LoginScreen()); // Go back to login screen when the button is clicked
         }
 
-        private void LoadCategoryButtons(HashSet<string> categories)
+        private void LoadCategoryButtons(List<string> categories)
         {
             menuCategoryPanel.Controls.Clear();
 
