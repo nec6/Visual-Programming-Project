@@ -202,6 +202,19 @@ namespace restaurantPOS
             command2.ExecuteNonQuery();
         }
 
+        public static string GetEmployeeName(int employeeID)
+        {
+            using var connection = new SqliteConnection("Data Source=pos.db");
+            connection.Open();
+
+            string sqlString = "SELECT name FROM Employees WHERE employeeID = @employeeID";
+
+            using SqliteCommand command = new SqliteCommand(sqlString, connection);
+            command.Parameters.AddWithValue("@employeeID", employeeID);
+
+            string result = (string) command.ExecuteScalar();
+            return result;
+        }
 
     }
 }

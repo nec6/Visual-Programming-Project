@@ -32,6 +32,7 @@
             menuCategoryPanel = new FlowLayoutPanel();
             menuItemsPanel = new FlowLayoutPanel();
             orderedItemsPanel = new FlowLayoutPanel();
+            viewTablesButton = new Button();
             SuspendLayout();
             // 
             // button1
@@ -69,10 +70,22 @@
             orderedItemsPanel.Size = new Size(560, 1626);
             orderedItemsPanel.TabIndex = 3;
             // 
+            // viewTablesButton
+            // 
+            viewTablesButton.Location = new Point(1818, 1805);
+            viewTablesButton.Margin = new Padding(3, 4, 3, 4);
+            viewTablesButton.Name = "viewTablesButton";
+            viewTablesButton.Size = new Size(190, 157);
+            viewTablesButton.TabIndex = 4;
+            viewTablesButton.Text = "View Tables";
+            viewTablesButton.UseVisualStyleBackColor = true;
+            viewTablesButton.Click += viewTablesButton_Click;
+            // 
             // OrderScreen
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(viewTablesButton);
             Controls.Add(orderedItemsPanel);
             Controls.Add(menuItemsPanel);
             Controls.Add(menuCategoryPanel);
@@ -90,5 +103,6 @@
         private FlowLayoutPanel menuCategoryPanel;
         private FlowLayoutPanel menuItemsPanel;
         private FlowLayoutPanel orderedItemsPanel;
+        private Button viewTablesButton;
     }
 }
