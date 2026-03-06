@@ -16,7 +16,8 @@ namespace restaurantPOS
         {
             InitializeComponent();
             ViewChanger.Initialize(screenHost);
-            ViewChanger.ChangeView(new LoginScreen()); // Initializes the login screen on program startup.
+            DatabaseHandler.Initialize(); // Initialize database on startup.
+            ViewChanger.ChangeView(new TableView(2)); // Initializes the login screen on program startup.
         }
 
         private void Form1_Load(object sender, EventArgs e)

@@ -28,32 +28,98 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            button1 = new Button();
+            menuCategoryPanel = new FlowLayoutPanel();
+            menuItemsPanel = new FlowLayoutPanel();
+            viewTablesButton = new Button();
+            tableLabel = new Label();
+            orderedItemsPanel = new FlowLayoutPanel();
+            SuspendLayout();
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(1870, 1410);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(175, 123);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Exit";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            button1.Location = new Point(2026, 1805);
+            button1.Margin = new Padding(3, 4, 3, 4);
+            button1.Name = "button1";
+            button1.Size = new Size(190, 157);
+            button1.TabIndex = 0;
+            button1.Text = "Exit";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
+            // menuCategoryPanel
+            // 
+            menuCategoryPanel.AutoScroll = true;
+            menuCategoryPanel.FlowDirection = FlowDirection.TopDown;
+            menuCategoryPanel.Location = new Point(732, 130);
+            menuCategoryPanel.Name = "menuCategoryPanel";
+            menuCategoryPanel.Size = new Size(419, 1626);
+            menuCategoryPanel.TabIndex = 1;
+            menuCategoryPanel.WrapContents = false;
+            // 
+            // menuItemsPanel
+            // 
+            menuItemsPanel.BackColor = SystemColors.ControlLight;
+            menuItemsPanel.Location = new Point(1194, 130);
+            menuItemsPanel.Name = "menuItemsPanel";
+            menuItemsPanel.Size = new Size(972, 1626);
+            menuItemsPanel.TabIndex = 2;
+            // 
+            // viewTablesButton
+            // 
+            viewTablesButton.Location = new Point(1818, 1805);
+            viewTablesButton.Margin = new Padding(3, 4, 3, 4);
+            viewTablesButton.Name = "viewTablesButton";
+            viewTablesButton.Size = new Size(190, 157);
+            viewTablesButton.TabIndex = 4;
+            viewTablesButton.Text = "View Tables";
+            viewTablesButton.UseVisualStyleBackColor = true;
+            viewTablesButton.Click += viewTablesButton_Click;
+            // 
+            // tableLabel
+            // 
+            tableLabel.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            tableLabel.Location = new Point(88, 44);
+            tableLabel.Name = "tableLabel";
+            tableLabel.Size = new Size(550, 64);
+            tableLabel.TabIndex = 6;
+            tableLabel.Text = "Table: Order:";
+            tableLabel.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // orderedItemsPanel
+            // 
+            orderedItemsPanel.AutoScroll = true;
+            orderedItemsPanel.FlowDirection = FlowDirection.TopDown;
+            orderedItemsPanel.Location = new Point(100, 130);
+            orderedItemsPanel.Name = "orderedItemsPanel";
+            orderedItemsPanel.Size = new Size(550, 1626);
+            orderedItemsPanel.TabIndex = 7;
+            orderedItemsPanel.WrapContents = false;
             // 
             // OrderScreen
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.button1);
-            this.Name = "OrderScreen";
-            this.Size = new System.Drawing.Size(2048, 1536);
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(orderedItemsPanel);
+            Controls.Add(tableLabel);
+            Controls.Add(viewTablesButton);
+            Controls.Add(menuItemsPanel);
+            Controls.Add(menuCategoryPanel);
+            Controls.Add(button1);
+            Margin = new Padding(3, 4, 3, 4);
+            Name = "OrderScreen";
+            Size = new Size(2219, 1966);
+            ResumeLayout(false);
 
         }
 
         #endregion
 
         private System.Windows.Forms.Button button1;
+        private FlowLayoutPanel menuCategoryPanel;
+        private FlowLayoutPanel menuItemsPanel;
+        private Button viewTablesButton;
+        private Label tableLabel;
+        private FlowLayoutPanel orderedItemsPanel;
     }
 }
