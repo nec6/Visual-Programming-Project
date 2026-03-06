@@ -1,11 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Diagnostics;
 using System.Text;
 using Microsoft.Data.Sqlite;
 
 namespace restaurantPOS
 {
+    public struct orderItem
+    {
+        public string itemName;
+        public int quantity;
+        public decimal price;
+    }
     public static class DatabaseHandler
     {
         public static void Initialize() 
@@ -109,7 +116,7 @@ namespace restaurantPOS
 
         public static List<string> GetCategoryNames()
         {
-            List<string> categories = new List<string>(); // HashSet used so that duplicate categories are not created.
+            List<string> categories = new List<string>(); 
 
             using var connection = new SqliteConnection("Data Source=pos.db");
             connection.Open();
@@ -231,5 +238,34 @@ namespace restaurantPOS
             return queryResult;
         }
 
+        
+
+        public static List<orderItem> GetOrderedItems(int orderNum)
+        {
+            List<orderItem> items = new List<orderItem>();
+
+            using var connection = new SqliteConnection("Data Source=pos.db");
+            connection.Open();
+
+            string sqlString = "SELECT menuItem, unitPrice, quantity FROM orderItems WHERE orderID = @orderID"; 
+
+            using SqliteCommand command = new SqliteCommand(sqlString, connection);
+            command.Parameters.AddWithValue("orderID", orderNum);
+            using var databaseReader = command.ExecuteReader();
+
+            while (databaseReader.Read())
+            {
+                orderItem item = new orderItem
+                {
+                    itemName = databaseReader["menuItem"].ToString(),
+                    quantity = Convert.ToInt32(databaseReader["quantity"]),
+                    price = Convert.ToDecimal(databaseReader["unitPrice"])
+                };
+
+                items.Add(item);
+            }
+
+            return items;
+        }
     }
 }

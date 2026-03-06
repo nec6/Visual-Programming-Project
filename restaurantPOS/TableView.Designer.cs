@@ -229,7 +229,8 @@
             employeeNameLabel.Name = "employeeNameLabel";
             employeeNameLabel.Size = new Size(275, 64);
             employeeNameLabel.TabIndex = 1;
-            employeeNameLabel.Text = "label1";
+            employeeNameLabel.Text = "Logged In:";
+            employeeNameLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // exitButton
             // 

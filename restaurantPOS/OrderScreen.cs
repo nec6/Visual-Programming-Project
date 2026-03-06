@@ -28,6 +28,7 @@ namespace restaurantPOS
         {
             LoadCategoryButtons(DatabaseHandler.GetCategoryNames());
             tableLabel.Text = "Table: " + tableNum + "    Order: " + orderNum;
+            loadOrderedItems(orderNum);
 
         }
 
@@ -92,6 +93,7 @@ namespace restaurantPOS
             Button clickedButton = (Button)sender;
             string itemToAdd = (string)clickedButton.Tag;
             DatabaseHandler.AddItemToOrder(tableNum, itemToAdd, orderNum);
+            loadOrderedItems(orderNum);
         }
 
         private void viewTablesButton_Click(object sender, EventArgs e)
@@ -99,9 +101,17 @@ namespace restaurantPOS
             ViewChanger.ChangeView(new TableView(employeeID));
         }
 
-        private void loadOrderedItems()
-        {
 
+        private void loadOrderedItems(int orderNum)
+        {
+            orderedItemsPanel.Controls.Clear();
+            foreach(orderItem item in DatabaseHandler.GetOrderedItems(orderNum))
+            {
+                Label newLabel = new Label();
+                newLabel.Text = item.itemName + "           " + item.price;
+                newLabel.AutoSize = true;
+                orderedItemsPanel.Controls.Add(newLabel);
+            }
         }
     }
 }
