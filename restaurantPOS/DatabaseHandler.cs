@@ -200,7 +200,6 @@ namespace restaurantPOS
             command2.Parameters.AddWithValue("@price", price);
             command2.Parameters.AddWithValue("@totalPrice", (quantity * price));
             command2.ExecuteNonQuery();
-
         }
 
 

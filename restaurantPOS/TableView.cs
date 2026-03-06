@@ -12,10 +12,17 @@ namespace restaurantPOS
 {
     public partial class TableView : UserControl
     {
-        public TableView()
+        public TableView(int employeeID)
         {
             InitializeComponent();
         }
 
+        private void TableButton_Click(object sender, EventArgs e)
+        {
+            Button clickedTable = (Button)sender;
+            int tableSelected = Convert.ToInt32(clickedTable.Tag);
+            // FIX HERE: CHECK IF ORDER EXISTS FOR TABLE, IF IT DOES NOT THEN CREATE ONE, IF IT DOES THEN USE IT
+            ViewChanger.ChangeView(new OrderScreen(1, tableSelected)); // CHNAGE THIS TO ACCEPT ACTUAL ORDER NUM NOR JUST "1"
+        }
     }
 }
