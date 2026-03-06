@@ -31,8 +31,10 @@
             button1 = new Button();
             menuCategoryPanel = new FlowLayoutPanel();
             menuItemsPanel = new FlowLayoutPanel();
-            orderedItemsPanel = new FlowLayoutPanel();
             viewTablesButton = new Button();
+            dataGridView1 = new DataGridView();
+            tableLabel = new Label();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
             // button1
@@ -58,17 +60,11 @@
             // 
             // menuItemsPanel
             // 
+            menuItemsPanel.BackColor = SystemColors.ControlLight;
             menuItemsPanel.Location = new Point(1194, 130);
             menuItemsPanel.Name = "menuItemsPanel";
             menuItemsPanel.Size = new Size(972, 1626);
             menuItemsPanel.TabIndex = 2;
-            // 
-            // orderedItemsPanel
-            // 
-            orderedItemsPanel.Location = new Point(112, 130);
-            orderedItemsPanel.Name = "orderedItemsPanel";
-            orderedItemsPanel.Size = new Size(560, 1626);
-            orderedItemsPanel.TabIndex = 3;
             // 
             // viewTablesButton
             // 
@@ -81,18 +77,39 @@
             viewTablesButton.UseVisualStyleBackColor = true;
             viewTablesButton.Click += viewTablesButton_Click;
             // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(88, 130);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 82;
+            dataGridView1.Size = new Size(550, 1626);
+            dataGridView1.TabIndex = 5;
+            // 
+            // tableLabel
+            // 
+            tableLabel.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            tableLabel.Location = new Point(88, 44);
+            tableLabel.Name = "tableLabel";
+            tableLabel.Size = new Size(550, 64);
+            tableLabel.TabIndex = 6;
+            tableLabel.Text = "Table: Order:";
+            tableLabel.TextAlign = ContentAlignment.MiddleCenter;
+            // 
             // OrderScreen
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(tableLabel);
+            Controls.Add(dataGridView1);
             Controls.Add(viewTablesButton);
-            Controls.Add(orderedItemsPanel);
             Controls.Add(menuItemsPanel);
             Controls.Add(menuCategoryPanel);
             Controls.Add(button1);
             Margin = new Padding(3, 4, 3, 4);
             Name = "OrderScreen";
             Size = new Size(2219, 1966);
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
 
         }
@@ -102,7 +119,8 @@
         private System.Windows.Forms.Button button1;
         private FlowLayoutPanel menuCategoryPanel;
         private FlowLayoutPanel menuItemsPanel;
-        private FlowLayoutPanel orderedItemsPanel;
         private Button viewTablesButton;
+        private DataGridView dataGridView1;
+        private Label tableLabel;
     }
 }

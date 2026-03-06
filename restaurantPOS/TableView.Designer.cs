@@ -44,6 +44,7 @@
             button2 = new Button();
             button1 = new Button();
             employeeNameLabel = new Label();
+            exitButton = new Button();
             tablesPanel.SuspendLayout();
             SuspendLayout();
             // 
@@ -230,10 +231,21 @@
             employeeNameLabel.TabIndex = 1;
             employeeNameLabel.Text = "label1";
             // 
+            // exitButton
+            // 
+            exitButton.Location = new Point(1970, 1734);
+            exitButton.Name = "exitButton";
+            exitButton.Size = new Size(216, 206);
+            exitButton.TabIndex = 2;
+            exitButton.Text = "Exit";
+            exitButton.UseVisualStyleBackColor = true;
+            exitButton.Click += exitButton_Click;
+            // 
             // TableView
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(exitButton);
             Controls.Add(employeeNameLabel);
             Controls.Add(tablesPanel);
             Margin = new Padding(3, 4, 3, 4);
@@ -262,5 +274,6 @@
         private Button button14;
         private Button button13;
         private Label employeeNameLabel;
+        private Button exitButton;
     }
 }

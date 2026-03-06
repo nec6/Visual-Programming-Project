@@ -216,5 +216,20 @@ namespace restaurantPOS
             return result;
         }
 
+        public static int GetOpenOrderNum(int tableNum)
+        {
+            using var connection = new SqliteConnection("Data Source=pos.db");
+            connection.Open();
+
+            string sqlString = "SELECT orderID FROM Orders WHERE tableNumber = @table AND status = 'Open'";
+
+            using SqliteCommand command = new SqliteCommand(sqlString, connection);
+            command.Parameters.AddWithValue("@table", tableNum);
+
+            int queryResult = Convert.ToInt32((long)command.ExecuteScalar());
+
+            return queryResult;
+        }
+
     }
 }

@@ -13,16 +13,21 @@ namespace restaurantPOS
     public partial class OrderScreen : UserControl
     {
         private int employeeID;
+        private int orderNum;
+        private int tableNum;
         public OrderScreen(int orderNum, int tableNum, int employeeID)
         {
             InitializeComponent();
             this.Load += OrderScreen_Load;
             this.employeeID = employeeID;
+            this.orderNum = orderNum;
+            this.tableNum = tableNum;
         }
 
         private void OrderScreen_Load(object sender, EventArgs e)
         {
             LoadCategoryButtons(DatabaseHandler.GetCategoryNames());
+            tableLabel.Text = "Table: " + tableNum + "    Order: " + orderNum;
 
         }
 
@@ -86,12 +91,17 @@ namespace restaurantPOS
         {
             Button clickedButton = (Button)sender;
             string itemToAdd = (string)clickedButton.Tag;
-            DatabaseHandler.AddItemToOrder(1, itemToAdd, 1); // CHNAGE THIS TO TAKE TABLE NUM AND ORDER NUM, NOT JUST 1 !!!!!!!
+            DatabaseHandler.AddItemToOrder(tableNum, itemToAdd, orderNum);
         }
 
         private void viewTablesButton_Click(object sender, EventArgs e)
         {
             ViewChanger.ChangeView(new TableView(employeeID));
+        }
+
+        private void loadOrderedItems()
+        {
+
         }
     }
 }

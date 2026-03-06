@@ -25,8 +25,23 @@ namespace restaurantPOS
         {
             Button clickedTable = (Button)sender;
             int tableSelected = Convert.ToInt32(clickedTable.Tag);
-            // FIX HERE: CHECK IF ORDER EXISTS FOR TABLE, IF IT DOES NOT THEN CREATE ONE, IF IT DOES THEN USE IT
-            ViewChanger.ChangeView(new OrderScreen(1, tableSelected, employeeID)); // CHNAGE THIS TO ACCEPT ACTUAL ORDER NUM NOR JUST "1"
+            
+            int orderNum;
+            if (DatabaseHandler.OrderExists(tableSelected) == 0)
+            {
+                DatabaseHandler.CreateOrder(employeeID, tableSelected);
+                orderNum = DatabaseHandler.GetOpenOrderNum(tableSelected);
+            }
+            else
+            {
+                orderNum = DatabaseHandler.GetOpenOrderNum(tableSelected);
+            }
+            ViewChanger.ChangeView(new OrderScreen(orderNum, tableSelected, employeeID));
+        }
+
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            ViewChanger.ChangeView(new LoginScreen());
         }
     }
 }
