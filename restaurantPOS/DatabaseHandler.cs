@@ -1,17 +1,25 @@
-﻿using System;
+﻿using Microsoft.Data.Sqlite;
+using System;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
 using System.Diagnostics;
+using System.IO.Pipelines;
 using System.Text;
-using Microsoft.Data.Sqlite;
+using System.Xml.Linq;
 
 namespace restaurantPOS
 {
-    public struct orderItem
+    public class orderItem
     {
         public string itemName;
         public int quantity;
         public decimal price;
+        public int orderItemID;
+
+        public override string ToString()
+        {
+            return $"{itemName} - ${price}";
+        }
     }
     public static class DatabaseHandler
     {
@@ -247,10 +255,10 @@ namespace restaurantPOS
             using var connection = new SqliteConnection("Data Source=pos.db");
             connection.Open();
 
-            string sqlString = "SELECT menuItem, unitPrice, quantity FROM orderItems WHERE orderID = @orderID"; 
+            string sqlString = "SELECT menuItem, unitPrice, quantity, orderItemID FROM orderItems WHERE orderID = @orderID"; 
 
             using SqliteCommand command = new SqliteCommand(sqlString, connection);
-            command.Parameters.AddWithValue("orderID", orderNum);
+            command.Parameters.AddWithValue("@orderID", orderNum);
             using var databaseReader = command.ExecuteReader();
 
             while (databaseReader.Read())
@@ -259,13 +267,26 @@ namespace restaurantPOS
                 {
                     itemName = databaseReader["menuItem"].ToString(),
                     quantity = Convert.ToInt32(databaseReader["quantity"]),
-                    price = Convert.ToDecimal(databaseReader["unitPrice"])
+                    price = Convert.ToDecimal(databaseReader["unitPrice"]),
+                    orderItemID = Convert.ToInt32(databaseReader["orderItemID"])
                 };
 
                 items.Add(item);
             }
 
             return items;
+        }
+
+        public static void RemoveItemFromOrder(int orderedItemID)
+        {
+            using var connection = new SqliteConnection("Data Source=pos.db");
+            connection.Open();
+
+            string sqlString = "DELETE FROM orderItems WHERE orderItemID = @orderedItemID";
+
+            using SqliteCommand command = new SqliteCommand(sqlString, connection);
+            command.Parameters.AddWithValue("@orderedItemID", orderedItemID);
+            command.ExecuteNonQuery();
         }
     }
 }

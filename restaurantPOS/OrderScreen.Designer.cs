@@ -33,7 +33,8 @@
             menuItemsPanel = new FlowLayoutPanel();
             viewTablesButton = new Button();
             tableLabel = new Label();
-            orderedItemsPanel = new FlowLayoutPanel();
+            orderedItemsListbox = new ListBox();
+            deleteItemButton = new Button();
             SuspendLayout();
             // 
             // button1
@@ -86,21 +87,30 @@
             tableLabel.Text = "Table: Order:";
             tableLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
-            // orderedItemsPanel
+            // orderedItemsListbox
             // 
-            orderedItemsPanel.AutoScroll = true;
-            orderedItemsPanel.FlowDirection = FlowDirection.TopDown;
-            orderedItemsPanel.Location = new Point(100, 130);
-            orderedItemsPanel.Name = "orderedItemsPanel";
-            orderedItemsPanel.Size = new Size(550, 1626);
-            orderedItemsPanel.TabIndex = 7;
-            orderedItemsPanel.WrapContents = false;
+            orderedItemsListbox.FormattingEnabled = true;
+            orderedItemsListbox.Location = new Point(88, 130);
+            orderedItemsListbox.Name = "orderedItemsListbox";
+            orderedItemsListbox.Size = new Size(562, 1636);
+            orderedItemsListbox.TabIndex = 7;
+            // 
+            // deleteItemButton
+            // 
+            deleteItemButton.Location = new Point(88, 1786);
+            deleteItemButton.Name = "deleteItemButton";
+            deleteItemButton.Size = new Size(166, 58);
+            deleteItemButton.TabIndex = 8;
+            deleteItemButton.Text = "Delete";
+            deleteItemButton.UseVisualStyleBackColor = true;
+            deleteItemButton.Click += deleteItemButton_Click;
             // 
             // OrderScreen
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(orderedItemsPanel);
+            Controls.Add(deleteItemButton);
+            Controls.Add(orderedItemsListbox);
             Controls.Add(tableLabel);
             Controls.Add(viewTablesButton);
             Controls.Add(menuItemsPanel);
@@ -120,6 +130,7 @@
         private FlowLayoutPanel menuItemsPanel;
         private Button viewTablesButton;
         private Label tableLabel;
-        private FlowLayoutPanel orderedItemsPanel;
+        private ListBox orderedItemsListbox;
+        private Button deleteItemButton;
     }
 }

@@ -104,14 +104,29 @@ namespace restaurantPOS
 
         private void loadOrderedItems(int orderNum)
         {
-            orderedItemsPanel.Controls.Clear();
-            foreach(orderItem item in DatabaseHandler.GetOrderedItems(orderNum))
+            orderedItemsListbox.Items.Clear();
+            foreach (orderItem item in DatabaseHandler.GetOrderedItems(orderNum))
             {
-                Label newLabel = new Label();
-                newLabel.Text = item.itemName + "           " + item.price;
-                newLabel.AutoSize = true;
-                orderedItemsPanel.Controls.Add(newLabel);
+                orderedItemsListbox.Items.Add(item);
             }
+        }
+
+        private void removeItem(int orderedItemID)
+        {
+            DatabaseHandler.RemoveItemFromOrder(orderedItemID);
+            loadOrderedItems(orderNum);
+        }
+
+        private void deleteItemButton_Click(object sender, EventArgs e)
+        {
+            if (orderedItemsListbox.SelectedIndex == -1) // Stop program from crashing when delete button is pressed but no item is selected.
+            {
+                return;
+            }
+            orderItem selectedItem = (orderItem) orderedItemsListbox.SelectedItem;
+            int itemToRemove = selectedItem.orderItemID;
+            removeItem(itemToRemove);
+            
         }
     }
 }
