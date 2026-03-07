@@ -108,6 +108,10 @@ namespace restaurantPOS
             foreach (orderItem item in DatabaseHandler.GetOrderedItems(orderNum))
             {
                 orderedItemsListbox.Items.Add(item);
+                if (!string.IsNullOrWhiteSpace(item.modifications))
+                {
+                    orderedItemsListbox.Items.Add("\t* " + item.modifications);
+                }
             }
         }
 
@@ -119,14 +123,37 @@ namespace restaurantPOS
 
         private void deleteItemButton_Click(object sender, EventArgs e)
         {
+            if (orderedItemsListbox.SelectedItem is not orderItem)
+            {
+                return; // Do nothing if selected item is modification and not th item itself
+            }
+
             if (orderedItemsListbox.SelectedIndex == -1) // Stop program from crashing when delete button is pressed but no item is selected.
             {
                 return;
             }
-            orderItem selectedItem = (orderItem) orderedItemsListbox.SelectedItem;
+            orderItem selectedItem = (orderItem)orderedItemsListbox.SelectedItem;
             int itemToRemove = selectedItem.orderItemID;
             removeItem(itemToRemove);
-            
+
+        }
+
+        private void modifyButton_Click(object sender, EventArgs e)
+        {
+            if (orderedItemsListbox.SelectedItem is not orderItem)
+            {
+                return; // Do nothing if selected item is modification and not th item itself
+            }
+
+            string modification = modificationsTextBox.Text;
+            if (string.IsNullOrEmpty(modification) || (orderedItemsListbox.SelectedIndex == -1))
+            {
+                return; // Do nothing if no modification is input or no item selected when button is pressed
+            }
+            orderItem selectedItem = (orderItem)orderedItemsListbox.SelectedItem;
+            int itemToModify = selectedItem.orderItemID;
+            DatabaseHandler.AddModification(itemToModify, modification);
+            loadOrderedItems(orderNum);
         }
     }
 }

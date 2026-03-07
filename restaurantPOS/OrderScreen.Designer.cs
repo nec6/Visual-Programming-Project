@@ -35,6 +35,8 @@
             tableLabel = new Label();
             orderedItemsListbox = new ListBox();
             deleteItemButton = new Button();
+            modificationsTextBox = new TextBox();
+            modifyButton = new Button();
             SuspendLayout();
             // 
             // button1
@@ -89,6 +91,7 @@
             // 
             // orderedItemsListbox
             // 
+            orderedItemsListbox.BackColor = SystemColors.Window;
             orderedItemsListbox.FormattingEnabled = true;
             orderedItemsListbox.Location = new Point(88, 130);
             orderedItemsListbox.Name = "orderedItemsListbox";
@@ -97,7 +100,7 @@
             // 
             // deleteItemButton
             // 
-            deleteItemButton.Location = new Point(88, 1786);
+            deleteItemButton.Location = new Point(88, 1844);
             deleteItemButton.Name = "deleteItemButton";
             deleteItemButton.Size = new Size(166, 58);
             deleteItemButton.TabIndex = 8;
@@ -105,10 +108,30 @@
             deleteItemButton.UseVisualStyleBackColor = true;
             deleteItemButton.Click += deleteItemButton_Click;
             // 
+            // modificationsTextBox
+            // 
+            modificationsTextBox.Location = new Point(88, 1782);
+            modificationsTextBox.Name = "modificationsTextBox";
+            modificationsTextBox.PlaceholderText = "Enter Modifications Here:";
+            modificationsTextBox.Size = new Size(562, 39);
+            modificationsTextBox.TabIndex = 9;
+            // 
+            // modifyButton
+            // 
+            modifyButton.Location = new Point(260, 1844);
+            modifyButton.Name = "modifyButton";
+            modifyButton.Size = new Size(166, 58);
+            modifyButton.TabIndex = 10;
+            modifyButton.Text = "Modify";
+            modifyButton.UseVisualStyleBackColor = true;
+            modifyButton.Click += modifyButton_Click;
+            // 
             // OrderScreen
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(modifyButton);
+            Controls.Add(modificationsTextBox);
             Controls.Add(deleteItemButton);
             Controls.Add(orderedItemsListbox);
             Controls.Add(tableLabel);
@@ -120,6 +143,7 @@
             Name = "OrderScreen";
             Size = new Size(2219, 1966);
             ResumeLayout(false);
+            PerformLayout();
 
         }
 
@@ -132,5 +156,7 @@
         private Label tableLabel;
         private ListBox orderedItemsListbox;
         private Button deleteItemButton;
+        private TextBox modificationsTextBox;
+        private Button modifyButton;
     }
 }

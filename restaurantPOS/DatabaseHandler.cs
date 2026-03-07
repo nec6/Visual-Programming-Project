@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data.SqlTypes;
 using System.Diagnostics;
 using System.IO.Pipelines;
+using System.Security.Policy;
 using System.Text;
 using System.Xml.Linq;
 
@@ -15,6 +16,7 @@ namespace restaurantPOS
         public int quantity;
         public decimal price;
         public int orderItemID;
+        public string modifications;
 
         public override string ToString()
         {
@@ -72,7 +74,8 @@ namespace restaurantPOS
                 menuItem TEXT,
                 quantity INTEGER,
                 unitPrice DECIMAL(6, 2),
-                itemTotalPrice DECIMAL(8, 2)
+                itemTotalPrice DECIMAL(8, 2),
+                modifications TEXT
                 );
                 ";
             command.ExecuteNonQuery();
@@ -255,7 +258,7 @@ namespace restaurantPOS
             using var connection = new SqliteConnection("Data Source=pos.db");
             connection.Open();
 
-            string sqlString = "SELECT menuItem, unitPrice, quantity, orderItemID FROM orderItems WHERE orderID = @orderID"; 
+            string sqlString = "SELECT menuItem, unitPrice, quantity, orderItemID, modifications FROM orderItems WHERE orderID = @orderID"; 
 
             using SqliteCommand command = new SqliteCommand(sqlString, connection);
             command.Parameters.AddWithValue("@orderID", orderNum);
@@ -268,7 +271,8 @@ namespace restaurantPOS
                     itemName = databaseReader["menuItem"].ToString(),
                     quantity = Convert.ToInt32(databaseReader["quantity"]),
                     price = Convert.ToDecimal(databaseReader["unitPrice"]),
-                    orderItemID = Convert.ToInt32(databaseReader["orderItemID"])
+                    orderItemID = Convert.ToInt32(databaseReader["orderItemID"]),
+                    modifications = databaseReader["modifications"].ToString()
                 };
 
                 items.Add(item);
@@ -286,6 +290,19 @@ namespace restaurantPOS
 
             using SqliteCommand command = new SqliteCommand(sqlString, connection);
             command.Parameters.AddWithValue("@orderedItemID", orderedItemID);
+            command.ExecuteNonQuery();
+        }
+
+        public static void AddModification(int orderedItemID, string modification)
+        {
+            using var connection = new SqliteConnection("Data Source=pos.db");
+            connection.Open();
+
+            string sqlString = "UPDATE orderItems SET modifications = @modification WHERE orderItemID = @orderItemID";
+
+            using SqliteCommand command = new SqliteCommand(sqlString, connection);
+            command.Parameters.AddWithValue("@modification", modification);
+            command.Parameters.AddWithValue("@orderItemID", orderedItemID);
             command.ExecuteNonQuery();
         }
     }
