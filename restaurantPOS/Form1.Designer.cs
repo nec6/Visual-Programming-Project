@@ -28,33 +28,47 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.screenHost = new System.Windows.Forms.Panel();
-            this.SuspendLayout();
+            components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            screenHost = new Panel();
+            imageList1 = new ImageList(components);
+            SuspendLayout();
             // 
             // screenHost
             // 
-            this.screenHost.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.screenHost.Location = new System.Drawing.Point(0, 0);
-            this.screenHost.Name = "screenHost";
-            this.screenHost.Size = new System.Drawing.Size(2048, 1536);
-            this.screenHost.TabIndex = 0;
+            screenHost.Dock = DockStyle.Fill;
+            screenHost.Location = new Point(0, 0);
+            screenHost.Margin = new Padding(3, 4, 3, 4);
+            screenHost.Name = "screenHost";
+            screenHost.Size = new Size(2219, 1966);
+            screenHost.TabIndex = 0;
+            // 
+            // imageList1
+            // 
+            imageList1.ColorDepth = ColorDepth.Depth32Bit;
+            imageList1.ImageStream = (ImageListStreamer)resources.GetObject("imageList1.ImageStream");
+            imageList1.TransparentColor = Color.Transparent;
+            imageList1.Images.SetKeyName(0, "Coke");
+            imageList1.Images.SetKeyName(1, "Sprite");
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2048, 1536);
-            this.Controls.Add(this.screenHost);
-            this.Name = "Form1";
-            this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(2219, 1966);
+            Controls.Add(screenHost);
+            Margin = new Padding(3, 4, 3, 4);
+            Name = "Form1";
+            Text = "Form1";
+            Load += Form1_Load;
+            ResumeLayout(false);
 
         }
 
         #endregion
 
         private System.Windows.Forms.Panel screenHost;
+        protected internal ImageList imageList1;
     }
 }
 

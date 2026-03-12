@@ -71,20 +71,43 @@ namespace restaurantPOS
         {
             menuItemsPanel.Controls.Clear();
 
+            Form1 mainForm = (Form1)Application.OpenForms["Form1"]; // Used to access imageList from in main form.
+            ImageList drinkImages = mainForm.imageList1;
+
             foreach (string item in menuItems)
             {
-                Button button = new Button
+                if (drinkImages.Images.ContainsKey(item)) // Add button with image if the image exists in the imagelist.
                 {
-                    Text = item,
-                    Tag = item,
-                    Width = 200,
-                    Height = 100,
-                    Margin = new Padding(20)
-                };
+                    Button button = new Button
+                    {
+                        // Text = item,
+                        Tag = item,
+                        Width = 200,
+                        Height = 100,
+                        Margin = new Padding(20),
+                        BackgroundImage = drinkImages.Images[item],
+                        BackgroundImageLayout = ImageLayout.Zoom
+                    };
 
-                button.Click += MenuItemButton_Click;
+                    button.Click += MenuItemButton_Click;
 
-                menuItemsPanel.Controls.Add(button);
+                    menuItemsPanel.Controls.Add(button);
+                }
+                else
+                {
+                    Button button = new Button
+                    {
+                        Text = item,
+                        Tag = item,
+                        Width = 200,
+                        Height = 100,
+                        Margin = new Padding(20),
+                    };
+
+                    button.Click += MenuItemButton_Click;
+
+                    menuItemsPanel.Controls.Add(button);
+                }
             }
         }
 
@@ -154,6 +177,7 @@ namespace restaurantPOS
             int itemToModify = selectedItem.orderItemID;
             DatabaseHandler.AddModification(itemToModify, modification);
             loadOrderedItems(orderNum);
+            modificationsTextBox.Clear();
         }
     }
 }
