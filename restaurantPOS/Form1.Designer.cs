@@ -50,6 +50,9 @@
             imageList1.TransparentColor = Color.Transparent;
             imageList1.Images.SetKeyName(0, "Coke");
             imageList1.Images.SetKeyName(1, "Sprite");
+            imageList1.Images.SetKeyName(2, "Coke Zero");
+            imageList1.Images.SetKeyName(3, "Dr. Pepper");
+            imageList1.Images.SetKeyName(4, "Root Beer");
             // 
             // Form1
             // 

@@ -26,6 +26,7 @@ namespace restaurantPOS
 
         private void OrderScreen_Load(object sender, EventArgs e)
         {
+            DatabaseHandler.updateOrderTotal(orderNum);
             LoadCategoryButtons(DatabaseHandler.GetCategoryNames());
             tableLabel.Text = "Table: " + tableNum + "    Order: " + orderNum;
             loadOrderedItems(orderNum);
@@ -93,7 +94,7 @@ namespace restaurantPOS
 
                     menuItemsPanel.Controls.Add(button);
                 }
-                else
+                else // If no image exists then use the text to show name.
                 {
                     Button button = new Button
                     {
@@ -116,6 +117,7 @@ namespace restaurantPOS
             Button clickedButton = (Button)sender;
             string itemToAdd = (string)clickedButton.Tag;
             DatabaseHandler.AddItemToOrder(tableNum, itemToAdd, orderNum);
+            DatabaseHandler.updateOrderTotal(orderNum);
             loadOrderedItems(orderNum);
         }
 
@@ -136,11 +138,21 @@ namespace restaurantPOS
                     orderedItemsListbox.Items.Add("\t* " + item.modifications);
                 }
             }
+
+            decimal subtotal = DatabaseHandler.GetOrderTotal(orderNum);
+            subtotalLabel.Text = "Subtotal: $" + subtotal.ToString("0.00");
+            
+            decimal tax = subtotal * 0.1m; // Tax rate of 10%
+            taxLabel.Text = "Tax: $" + tax.ToString("0.00");
+
+            decimal total = subtotal + tax;
+            totalLabel.Text = "Total: $" + total.ToString("0.00");
         }
 
         private void removeItem(int orderedItemID)
         {
             DatabaseHandler.RemoveItemFromOrder(orderedItemID);
+            DatabaseHandler.updateOrderTotal(orderNum);
             loadOrderedItems(orderNum);
         }
 
@@ -148,7 +160,7 @@ namespace restaurantPOS
         {
             if (orderedItemsListbox.SelectedItem is not orderItem)
             {
-                return; // Do nothing if selected item is modification and not th item itself
+                return; // Do nothing if selected item is modification and not the item itself
             }
 
             if (orderedItemsListbox.SelectedIndex == -1) // Stop program from crashing when delete button is pressed but no item is selected.

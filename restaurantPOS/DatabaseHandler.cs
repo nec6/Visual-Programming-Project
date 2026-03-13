@@ -25,7 +25,7 @@ namespace restaurantPOS
     }
     public static class DatabaseHandler
     {
-        public static void Initialize() 
+        public static void Initialize()
         {
             using var connection = new SqliteConnection("Data Source=pos.db");
             connection.Open();
@@ -127,7 +127,7 @@ namespace restaurantPOS
 
         public static List<string> GetCategoryNames()
         {
-            List<string> categories = new List<string>(); 
+            List<string> categories = new List<string>();
 
             using var connection = new SqliteConnection("Data Source=pos.db");
             connection.Open();
@@ -168,7 +168,7 @@ namespace restaurantPOS
 
             return menuItems;
         }
-        
+
         public static int OrderExists(int tableNum) // Check if order exists for given table.
         {
             using var connection = new SqliteConnection("Data Source=pos.db");
@@ -179,7 +179,7 @@ namespace restaurantPOS
             using SqliteCommand command = new SqliteCommand(sqlString, connection);
             command.Parameters.AddWithValue("@table", tableNum);
 
-            int queryResult = Convert.ToInt32((long) command.ExecuteScalar());
+            int queryResult = Convert.ToInt32((long)command.ExecuteScalar());
 
             return queryResult;
         }
@@ -230,7 +230,7 @@ namespace restaurantPOS
             using SqliteCommand command = new SqliteCommand(sqlString, connection);
             command.Parameters.AddWithValue("@employeeID", employeeID);
 
-            string result = (string) command.ExecuteScalar();
+            string result = (string)command.ExecuteScalar();
             return result;
         }
 
@@ -249,7 +249,7 @@ namespace restaurantPOS
             return queryResult;
         }
 
-        
+
 
         public static List<orderItem> GetOrderedItems(int orderNum)
         {
@@ -258,7 +258,7 @@ namespace restaurantPOS
             using var connection = new SqliteConnection("Data Source=pos.db");
             connection.Open();
 
-            string sqlString = "SELECT menuItem, unitPrice, quantity, orderItemID, modifications FROM orderItems WHERE orderID = @orderID"; 
+            string sqlString = "SELECT menuItem, unitPrice, quantity, orderItemID, modifications FROM orderItems WHERE orderID = @orderID";
 
             using SqliteCommand command = new SqliteCommand(sqlString, connection);
             command.Parameters.AddWithValue("@orderID", orderNum);
@@ -305,5 +305,46 @@ namespace restaurantPOS
             command.Parameters.AddWithValue("@orderItemID", orderedItemID);
             command.ExecuteNonQuery();
         }
+
+        public static void updateOrderTotal(int orderID)
+        {
+            using var connection = new SqliteConnection("Data Source=pos.db");
+            connection.Open();
+
+            string sqlString = "SELECT * FROM orderItems WHERE orderID = @orderID";
+
+            using SqliteCommand command = new SqliteCommand(sqlString, connection);
+            command.Parameters.AddWithValue("@orderID", orderID);
+            using var databaseReader = command.ExecuteReader();
+
+            decimal sum = 0;
+
+            while (databaseReader.Read())
+            {
+                sum += Convert.ToDecimal(databaseReader["itemTotalPrice"]);
+            }
+
+            string sqlString2 = "UPDATE Orders SET total = @total WHERE orderID = @orderID";
+
+            using SqliteCommand command2 = new SqliteCommand(sqlString2, connection);
+            command2.Parameters.AddWithValue("@total", sum);
+            command2.Parameters.AddWithValue("@orderID", orderID);
+            command2.ExecuteNonQuery();
+        }
+
+        public static decimal GetOrderTotal(int orderID)
+        {
+            using var connection = new SqliteConnection("Data Source=pos.db");
+            connection.Open();
+
+            string sqlString = "SELECT total FROM Orders WHERE orderID = @orderID";
+
+            using SqliteCommand command = new SqliteCommand(sqlString, connection);
+            command.Parameters.AddWithValue("@orderID", orderID);
+            decimal total = Convert.ToDecimal(command.ExecuteScalar());
+
+            return total;
+        }
     }
 }
+

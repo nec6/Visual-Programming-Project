@@ -37,6 +37,9 @@
             deleteItemButton = new Button();
             modificationsTextBox = new TextBox();
             modifyButton = new Button();
+            totalLabel = new Label();
+            taxLabel = new Label();
+            subtotalLabel = new Label();
             SuspendLayout();
             // 
             // button1
@@ -95,7 +98,7 @@
             orderedItemsListbox.FormattingEnabled = true;
             orderedItemsListbox.Location = new Point(88, 130);
             orderedItemsListbox.Name = "orderedItemsListbox";
-            orderedItemsListbox.Size = new Size(562, 1636);
+            orderedItemsListbox.Size = new Size(562, 1476);
             orderedItemsListbox.TabIndex = 7;
             // 
             // deleteItemButton
@@ -126,10 +129,41 @@
             modifyButton.UseVisualStyleBackColor = true;
             modifyButton.Click += modifyButton_Click;
             // 
+            // totalLabel
+            // 
+            totalLabel.Location = new Point(212, 1724);
+            totalLabel.Name = "totalLabel";
+            totalLabel.Size = new Size(444, 32);
+            totalLabel.TabIndex = 11;
+            totalLabel.Text = "Total: $0.00";
+            totalLabel.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // taxLabel
+            // 
+            taxLabel.Location = new Point(174, 1674);
+            taxLabel.Name = "taxLabel";
+            taxLabel.Size = new Size(482, 32);
+            taxLabel.TabIndex = 12;
+            taxLabel.Text = "Tax: $0.00";
+            taxLabel.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // subtotalLabel
+            // 
+            subtotalLabel.Anchor = AnchorStyles.Right;
+            subtotalLabel.Location = new Point(156, 1624);
+            subtotalLabel.Name = "subtotalLabel";
+            subtotalLabel.Size = new Size(500, 32);
+            subtotalLabel.TabIndex = 13;
+            subtotalLabel.Text = "Subtotal: $0.00";
+            subtotalLabel.TextAlign = ContentAlignment.MiddleRight;
+            // 
             // OrderScreen
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(subtotalLabel);
+            Controls.Add(taxLabel);
+            Controls.Add(totalLabel);
             Controls.Add(modifyButton);
             Controls.Add(modificationsTextBox);
             Controls.Add(deleteItemButton);
@@ -158,5 +192,8 @@
         private Button deleteItemButton;
         private TextBox modificationsTextBox;
         private Button modifyButton;
+        private Label totalLabel;
+        private Label taxLabel;
+        private Label subtotalLabel;
     }
 }
