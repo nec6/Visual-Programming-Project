@@ -141,7 +141,7 @@ namespace restaurantPOS
 
             decimal subtotal = DatabaseHandler.GetOrderTotal(orderNum);
             subtotalLabel.Text = "Subtotal: $" + subtotal.ToString("0.00");
-            
+
             decimal tax = subtotal * 0.1m; // Tax rate of 10%
             taxLabel.Text = "Tax: $" + tax.ToString("0.00");
 
@@ -190,6 +190,12 @@ namespace restaurantPOS
             DatabaseHandler.AddModification(itemToModify, modification);
             loadOrderedItems(orderNum);
             modificationsTextBox.Clear();
+        }
+
+        private void button2_Click(object sender, EventArgs e) // Closes check and goes back to table view.
+        {
+            DatabaseHandler.CloseCheck(orderNum);
+            ViewChanger.ChangeView(new TableView(employeeID));
         }
     }
 }

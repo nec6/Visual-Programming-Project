@@ -214,6 +214,7 @@
             // 
             // button1
             // 
+            button1.BackColor = SystemColors.Control;
             button1.Location = new Point(137, 143);
             button1.Name = "button1";
             button1.Size = new Size(244, 234);

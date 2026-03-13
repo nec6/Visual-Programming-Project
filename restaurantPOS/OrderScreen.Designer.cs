@@ -40,6 +40,7 @@
             totalLabel = new Label();
             taxLabel = new Label();
             subtotalLabel = new Label();
+            button2 = new Button();
             SuspendLayout();
             // 
             // button1
@@ -157,10 +158,21 @@
             subtotalLabel.Text = "Subtotal: $0.00";
             subtotalLabel.TextAlign = ContentAlignment.MiddleRight;
             // 
+            // button2
+            // 
+            button2.Location = new Point(975, 1804);
+            button2.Name = "button2";
+            button2.Size = new Size(176, 138);
+            button2.TabIndex = 14;
+            button2.Text = "Close Check";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click;
+            // 
             // OrderScreen
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(button2);
             Controls.Add(subtotalLabel);
             Controls.Add(taxLabel);
             Controls.Add(totalLabel);
@@ -195,5 +207,6 @@
         private Label totalLabel;
         private Label taxLabel;
         private Label subtotalLabel;
+        private Button button2;
     }
 }

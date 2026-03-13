@@ -345,6 +345,18 @@ namespace restaurantPOS
 
             return total;
         }
+
+        public static void CloseCheck(int orderID)
+        {
+            using var connection = new SqliteConnection("Data Source=pos.db");
+            connection.Open();
+
+            string sqlString = "UPDATE Orders SET status = 'Closed' WHERE orderID = @orderID";
+
+            using SqliteCommand command = new SqliteCommand(sqlString, connection);
+            command.Parameters.AddWithValue("@orderID", orderID);
+            command.ExecuteNonQuery();
+        }
     }
 }
 

@@ -19,6 +19,24 @@ namespace restaurantPOS
             this.employeeID = employeeID;
             string employeeName = DatabaseHandler.GetEmployeeName(employeeID);
             employeeNameLabel.Text = "Logged In: " + employeeName;
+            this.Load += TableView_Load; 
+        }
+
+        private void TableView_Load(object sender, EventArgs e)
+        {
+            foreach (Control item in tablesPanel.Controls)
+            {
+                if (item is Button button)
+                {
+                    if (button.Tag != null)
+                    {
+                        if (DatabaseHandler.OrderExists(Convert.ToInt32(button.Tag)) != 0)
+                        {
+                            button.BackColor = Color.LightGreen; // Change the color of the button to green if there is an open order for that table.
+                        }
+                    }
+                }
+            }
         }
 
         private void TableButton_Click(object sender, EventArgs e)
