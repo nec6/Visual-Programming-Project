@@ -357,6 +357,21 @@ namespace restaurantPOS
             command.Parameters.AddWithValue("@orderID", orderID);
             command.ExecuteNonQuery();
         }
+
+        public static int VerifyOpenTableOwner(int tableNum, int employeeNum) // Checks if table's open order belongs to given employee
+        {
+            using var connection = new SqliteConnection("Data Source=pos.db");
+            connection.Open();
+
+            string sqlString = "SELECT EXISTS (SELECT 1 FROM Orders WHERE tableNumber = @tableNum AND status = 'Open' AND employeeID = @employeeNum)";
+
+            using SqliteCommand command = new SqliteCommand(sqlString, connection);
+            command.Parameters.AddWithValue("@tableNum", tableNum);
+            command.Parameters.AddWithValue("@employeeNum", employeeNum);
+            int queryResult = Convert.ToInt32((long)command.ExecuteScalar());
+
+            return queryResult;
+        }
     }
 }
 

@@ -53,6 +53,12 @@
             imageList1.Images.SetKeyName(2, "Coke Zero");
             imageList1.Images.SetKeyName(3, "Dr. Pepper");
             imageList1.Images.SetKeyName(4, "Root Beer");
+            imageList1.Images.SetKeyName(5, "Diet Coke");
+            imageList1.Images.SetKeyName(6, "Bud Light");
+            imageList1.Images.SetKeyName(7, "Modelo");
+            imageList1.Images.SetKeyName(8, "Miller Lite");
+            imageList1.Images.SetKeyName(9, "Guinness");
+            imageList1.Images.SetKeyName(10, "Stella Artois");
             // 
             // Form1
             // 

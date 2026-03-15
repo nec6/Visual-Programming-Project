@@ -38,7 +38,7 @@ namespace restaurantPOS
             ViewChanger.ChangeView(new LoginScreen()); // Go back to login screen when the button is clicked
         }
 
-        private void LoadCategoryButtons(List<string> categories)
+        private void LoadCategoryButtons(List<string> categories) // Loads categories from database
         {
             menuCategoryPanel.Controls.Clear();
 
@@ -50,7 +50,8 @@ namespace restaurantPOS
                     Tag = category,
                     Width = 240,
                     Height = 120,
-                    Margin = new Padding(20)
+                    Margin = new Padding(20),
+                    Font = new Font("Arial", 12, FontStyle.Bold)
                 };
 
                 button.Click += CategoryButton_Click;
@@ -61,7 +62,7 @@ namespace restaurantPOS
 
         }
 
-        private void CategoryButton_Click(object sender, EventArgs e)
+        private void CategoryButton_Click(object sender, EventArgs e) // Displays selected category's items in menu items panel.
         {
             Button clickedButton = (Button)sender;
             string categorySelected = (string)clickedButton.Tag;
@@ -103,6 +104,8 @@ namespace restaurantPOS
                         Width = 200,
                         Height = 100,
                         Margin = new Padding(20),
+                        Font = new Font("Arial", 10, FontStyle.Bold),
+                        BackColor = Color.Lavender
                     };
 
                     button.Click += MenuItemButton_Click;
@@ -112,7 +115,7 @@ namespace restaurantPOS
             }
         }
 
-        private void MenuItemButton_Click(object sender, EventArgs e)
+        private void MenuItemButton_Click(object sender, EventArgs e) // Add item to order and display in the listbox when clicked
         {
             Button clickedButton = (Button)sender;
             string itemToAdd = (string)clickedButton.Tag;
@@ -127,7 +130,7 @@ namespace restaurantPOS
         }
 
 
-        private void loadOrderedItems(int orderNum)
+        private void loadOrderedItems(int orderNum) // Load ordered items into listbox and subtotal, tax, and total
         {
             orderedItemsListbox.Items.Clear();
             foreach (orderItem item in DatabaseHandler.GetOrderedItems(orderNum))
@@ -149,7 +152,7 @@ namespace restaurantPOS
             totalLabel.Text = "Total: $" + total.ToString("0.00");
         }
 
-        private void removeItem(int orderedItemID)
+        private void removeItem(int orderedItemID) 
         {
             DatabaseHandler.RemoveItemFromOrder(orderedItemID);
             DatabaseHandler.updateOrderTotal(orderNum);
@@ -177,7 +180,7 @@ namespace restaurantPOS
         {
             if (orderedItemsListbox.SelectedItem is not orderItem)
             {
-                return; // Do nothing if selected item is modification and not th item itself
+                return; // Do nothing if selected item is modification and not the item itself
             }
 
             string modification = modificationsTextBox.Text;

@@ -45,6 +45,7 @@
             // 
             // button1
             // 
+            button1.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button1.Location = new Point(2026, 1805);
             button1.Margin = new Padding(3, 4, 3, 4);
             button1.Name = "button1";
@@ -57,10 +58,11 @@
             // menuCategoryPanel
             // 
             menuCategoryPanel.AutoScroll = true;
+            menuCategoryPanel.BackColor = SystemColors.Control;
             menuCategoryPanel.FlowDirection = FlowDirection.TopDown;
-            menuCategoryPanel.Location = new Point(732, 130);
+            menuCategoryPanel.Location = new Point(764, 130);
             menuCategoryPanel.Name = "menuCategoryPanel";
-            menuCategoryPanel.Size = new Size(419, 1626);
+            menuCategoryPanel.Size = new Size(320, 1626);
             menuCategoryPanel.TabIndex = 1;
             menuCategoryPanel.WrapContents = false;
             // 
@@ -74,6 +76,7 @@
             // 
             // viewTablesButton
             // 
+            viewTablesButton.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             viewTablesButton.Location = new Point(1818, 1805);
             viewTablesButton.Margin = new Padding(3, 4, 3, 4);
             viewTablesButton.Name = "viewTablesButton";
@@ -160,6 +163,7 @@
             // 
             // button2
             // 
+            button2.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button2.Location = new Point(975, 1804);
             button2.Name = "button2";
             button2.Size = new Size(176, 138);
@@ -172,6 +176,7 @@
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.Info;
             Controls.Add(button2);
             Controls.Add(subtotalLabel);
             Controls.Add(taxLabel);
