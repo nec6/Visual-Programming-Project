@@ -66,6 +66,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(2219, 1966);
             Controls.Add(screenHost);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Margin = new Padding(3, 4, 3, 4);
             Name = "Form1";
             Text = "Form1";

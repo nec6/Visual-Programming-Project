@@ -372,6 +372,20 @@ namespace restaurantPOS
 
             return queryResult;
         }
+
+        public static string GetEmployeeType(int employeeNum)
+        {
+            using var connection = new SqliteConnection("Data Source=pos.db");
+            connection.Open();
+
+            string sqlString = "SELECT role FROM Employees where employeeID = @employeeNum";
+
+            using SqliteCommand command = new SqliteCommand(sqlString, connection);
+            command.Parameters.AddWithValue("@employeeNum", employeeNum);
+            string result = (string)command.ExecuteScalar();
+
+            return result;
+        }
     }
 }
 

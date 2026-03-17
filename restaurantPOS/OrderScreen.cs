@@ -170,10 +170,28 @@ namespace restaurantPOS
             {
                 return;
             }
+
+            if (DatabaseHandler.GetEmployeeType(employeeID) == "Manager") // Only allows managers to delete items.
+            { 
+
             orderItem selectedItem = (orderItem)orderedItemsListbox.SelectedItem;
             int itemToRemove = selectedItem.orderItemID;
             removeItem(itemToRemove);
-
+            }
+            else
+            {
+                var popup = new managerApprovalPopup();
+                if (popup.ShowDialog() == DialogResult.OK)
+                {
+                    if (DatabaseHandler.GetEmployeeType(popup.employeeID) == "Manager")
+                    {
+                        orderItem selectedItem = (orderItem)orderedItemsListbox.SelectedItem;
+                        int itemToRemove = selectedItem.orderItemID;
+                        removeItem(itemToRemove);
+                    }
+                }
+                return;
+            }
         }
 
         private void modifyButton_Click(object sender, EventArgs e)
