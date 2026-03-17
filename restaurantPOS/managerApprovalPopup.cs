@@ -16,9 +16,24 @@ namespace restaurantPOS
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e) // Get employee ID from textbox, if textbox is empty set employeeID to 0
         {
-            employeeID = Convert.ToInt32(idTextbox.Text);
+            if (idTextbox.Text != "")
+            {
+                try // Prevents crashing if user enter a non-numeric value in the textbox, if that happens employeeID is set to 0 (invalid login)
+                {
+                    employeeID = Convert.ToInt32(idTextbox.Text);
+                }
+                catch 
+                {
+                    employeeID = 0;
+                 };
+
+            }
+            else
+            {
+                employeeID = 0;
+            }
         }
     }
 }

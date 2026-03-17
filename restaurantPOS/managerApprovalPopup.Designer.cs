@@ -36,15 +36,16 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(277, 184);
+            label1.Font = new Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(691, 550);
             label1.Name = "label1";
-            label1.Size = new Size(206, 32);
+            label1.Size = new Size(872, 128);
             label1.TabIndex = 0;
             label1.Text = "Enter Manager ID:";
             // 
             // idTextbox
             // 
-            idTextbox.Location = new Point(283, 272);
+            idTextbox.Location = new Point(1011, 772);
             idTextbox.Name = "idTextbox";
             idTextbox.PlaceholderText = "Enter ID:";
             idTextbox.Size = new Size(200, 39);
@@ -53,9 +54,9 @@
             // button1
             // 
             button1.DialogResult = DialogResult.OK;
-            button1.Location = new Point(305, 358);
+            button1.Location = new Point(973, 898);
             button1.Name = "button1";
-            button1.Size = new Size(150, 46);
+            button1.Size = new Size(276, 132);
             button1.TabIndex = 2;
             button1.Text = "Confirm";
             button1.UseVisualStyleBackColor = true;
@@ -65,12 +66,13 @@
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(846, 506);
+            ClientSize = new Size(2219, 1966);
             Controls.Add(button1);
             Controls.Add(idTextbox);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "managerApprovalPopup";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "managerApprovalPopup";
             ResumeLayout(false);
             PerformLayout();

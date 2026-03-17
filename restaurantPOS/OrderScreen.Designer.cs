@@ -46,7 +46,7 @@
             // button1
             // 
             button1.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button1.Location = new Point(2026, 1805);
+            button1.Location = new Point(1976, 1782);
             button1.Margin = new Padding(3, 4, 3, 4);
             button1.Name = "button1";
             button1.Size = new Size(190, 157);
@@ -77,7 +77,7 @@
             // viewTablesButton
             // 
             viewTablesButton.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            viewTablesButton.Location = new Point(1818, 1805);
+            viewTablesButton.Location = new Point(1752, 1782);
             viewTablesButton.Margin = new Padding(3, 4, 3, 4);
             viewTablesButton.Name = "viewTablesButton";
             viewTablesButton.Size = new Size(190, 157);
@@ -107,7 +107,7 @@
             // 
             // deleteItemButton
             // 
-            deleteItemButton.Location = new Point(88, 1844);
+            deleteItemButton.Location = new Point(88, 1881);
             deleteItemButton.Name = "deleteItemButton";
             deleteItemButton.Size = new Size(166, 58);
             deleteItemButton.TabIndex = 8;
@@ -117,7 +117,7 @@
             // 
             // modificationsTextBox
             // 
-            modificationsTextBox.Location = new Point(88, 1782);
+            modificationsTextBox.Location = new Point(88, 1806);
             modificationsTextBox.Name = "modificationsTextBox";
             modificationsTextBox.PlaceholderText = "Enter Modifications Here:";
             modificationsTextBox.Size = new Size(562, 39);
@@ -125,7 +125,7 @@
             // 
             // modifyButton
             // 
-            modifyButton.Location = new Point(260, 1844);
+            modifyButton.Location = new Point(260, 1881);
             modifyButton.Name = "modifyButton";
             modifyButton.Size = new Size(166, 58);
             modifyButton.TabIndex = 10;
@@ -164,9 +164,9 @@
             // button2
             // 
             button2.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.Location = new Point(975, 1804);
+            button2.Location = new Point(1194, 1782);
             button2.Name = "button2";
-            button2.Size = new Size(176, 138);
+            button2.Size = new Size(191, 157);
             button2.TabIndex = 14;
             button2.Text = "Close Check";
             button2.UseVisualStyleBackColor = true;

@@ -71,6 +71,7 @@
             // 
             // button14
             // 
+            button14.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             button14.Location = new Point(1403, 1390);
             button14.Name = "button14";
             button14.Size = new Size(244, 234);
@@ -82,6 +83,7 @@
             // 
             // button13
             // 
+            button13.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             button13.Location = new Point(1403, 1078);
             button13.Name = "button13";
             button13.Size = new Size(244, 234);
@@ -93,6 +95,7 @@
             // 
             // button12
             // 
+            button12.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             button12.Location = new Point(1403, 758);
             button12.Name = "button12";
             button12.Size = new Size(244, 234);
@@ -104,6 +107,7 @@
             // 
             // button11
             // 
+            button11.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             button11.Location = new Point(1403, 448);
             button11.Name = "button11";
             button11.Size = new Size(244, 234);
@@ -115,6 +119,7 @@
             // 
             // button10
             // 
+            button10.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             button10.Location = new Point(1403, 143);
             button10.Name = "button10";
             button10.Size = new Size(244, 234);
@@ -126,6 +131,7 @@
             // 
             // button9
             // 
+            button9.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             button9.Location = new Point(593, 1506);
             button9.Name = "button9";
             button9.Size = new Size(606, 234);
@@ -137,6 +143,7 @@
             // 
             // button8
             // 
+            button8.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             button8.Location = new Point(593, 1078);
             button8.Name = "button8";
             button8.Size = new Size(606, 234);
@@ -148,6 +155,7 @@
             // 
             // button7
             // 
+            button7.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             button7.Location = new Point(593, 604);
             button7.Name = "button7";
             button7.Size = new Size(606, 234);
@@ -159,6 +167,7 @@
             // 
             // button6
             // 
+            button6.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             button6.Location = new Point(593, 143);
             button6.Name = "button6";
             button6.Size = new Size(606, 234);
@@ -170,6 +179,7 @@
             // 
             // button5
             // 
+            button5.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             button5.Location = new Point(137, 1390);
             button5.Name = "button5";
             button5.Size = new Size(244, 234);
@@ -181,6 +191,7 @@
             // 
             // button4
             // 
+            button4.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             button4.Location = new Point(137, 1078);
             button4.Name = "button4";
             button4.Size = new Size(244, 234);
@@ -192,6 +203,7 @@
             // 
             // button3
             // 
+            button3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button3.Location = new Point(137, 448);
             button3.Name = "button3";
             button3.Size = new Size(244, 234);
@@ -203,6 +215,7 @@
             // 
             // button2
             // 
+            button2.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
             button2.Location = new Point(137, 758);
             button2.Name = "button2";
             button2.Size = new Size(244, 234);
@@ -215,6 +228,7 @@
             // button1
             // 
             button1.BackColor = SystemColors.Control;
+            button1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button1.Location = new Point(137, 143);
             button1.Name = "button1";
             button1.Size = new Size(244, 234);
@@ -226,6 +240,7 @@
             // 
             // employeeNameLabel
             // 
+            employeeNameLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             employeeNameLabel.Location = new Point(1944, 0);
             employeeNameLabel.Name = "employeeNameLabel";
             employeeNameLabel.Size = new Size(275, 64);
