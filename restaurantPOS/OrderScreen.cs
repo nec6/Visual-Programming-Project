@@ -15,6 +15,7 @@ namespace restaurantPOS
         private int employeeID;
         private int orderNum;
         private int tableNum;
+        private decimal balanceDue;
         public OrderScreen(int orderNum, int tableNum, int employeeID)
         {
             InitializeComponent();
@@ -150,9 +151,15 @@ namespace restaurantPOS
 
             decimal total = subtotal + tax;
             totalLabel.Text = "Total: $" + total.ToString("0.00");
+
+            decimal appliedPayments = DatabaseHandler.GetAppliedPayments(orderNum);
+            paymentsLabel.Text = "Payments: $" + appliedPayments.ToString("0.00");
+
+            balanceDue = total - appliedPayments;
+            balanceDueLabel.Text = "Balance Due: $" + balanceDue.ToString("0.00");
         }
 
-        private void removeItem(int orderedItemID) 
+        private void removeItem(int orderedItemID)
         {
             DatabaseHandler.RemoveItemFromOrder(orderedItemID);
             DatabaseHandler.updateOrderTotal(orderNum);
@@ -172,11 +179,11 @@ namespace restaurantPOS
             }
 
             if (DatabaseHandler.GetEmployeeType(employeeID) == "Manager") // Only allows managers to delete items.
-            { 
+            {
 
-            orderItem selectedItem = (orderItem)orderedItemsListbox.SelectedItem;
-            int itemToRemove = selectedItem.orderItemID;
-            removeItem(itemToRemove);
+                orderItem selectedItem = (orderItem)orderedItemsListbox.SelectedItem;
+                int itemToRemove = selectedItem.orderItemID;
+                removeItem(itemToRemove);
             }
             else
             {
@@ -215,8 +222,21 @@ namespace restaurantPOS
 
         private void button2_Click(object sender, EventArgs e) // Closes check and goes back to table view.
         {
+            if (balanceDue > 0)
+            {
+                var popup = new balanceDueForm();
+                popup.ShowDialog();
+                return; // Do not close check if balance is still due after showing balance due form.
+            }
             DatabaseHandler.CloseCheck(orderNum);
             ViewChanger.ChangeView(new TableView(employeeID));
+        }
+
+        private void payButton_Click(object sender, EventArgs e)
+        {
+            var popup = new paymentsScreen(orderNum, balanceDue);
+            popup.ShowDialog();
+            loadOrderedItems(orderNum); // Refresh order screen after closing payments screen to update balance due and applied payments.
         }
     }
 }

@@ -79,6 +79,17 @@ namespace restaurantPOS
                 );
                 ";
             command.ExecuteNonQuery();
+
+            command.CommandText = // Payments Table
+                @"
+                CREATE TABLE IF NOT EXISTS Payments (
+                paymentID INTEGER PRIMARY KEY,
+                orderID INTEGER,    
+                amount DECIMAL(12, 2),
+                paymentMethod TEXT
+                );
+                ";
+            command.ExecuteNonQuery();
         }
 
         public static void addEmployee(int employeeID, string name, string role)
@@ -385,6 +396,34 @@ namespace restaurantPOS
             string result = (string)command.ExecuteScalar();
 
             return result;
+        }
+
+        public static decimal GetAppliedPayments(int orderNum)
+        {
+            using var connection = new SqliteConnection("Data Source=pos.db");
+            connection.Open();
+            string sqlString = "SELECT amount FROM Payments WHERE orderID = @orderNum";
+            using SqliteCommand command = new SqliteCommand(sqlString, connection);
+            command.Parameters.AddWithValue("@orderNum", orderNum);
+            using var databaseReader = command.ExecuteReader();
+            decimal sum = 0;
+            while (databaseReader.Read())
+            {
+                sum += Convert.ToDecimal(databaseReader["amount"]);
+            }
+            return sum;
+        }
+
+        public static void ApplyPayment(int orderNum, decimal amount, string paymentType)
+        {
+            using var connection = new SqliteConnection("Data Source=pos.db");
+            connection.Open();
+            string sqlString = "INSERT INTO Payments (orderID, amount, paymentMethod) VALUES (@orderNum, @amount, @paymentType)";
+            using SqliteCommand command = new SqliteCommand(sqlString, connection);
+            command.Parameters.AddWithValue("@orderNum", orderNum);
+            command.Parameters.AddWithValue("@amount", amount);
+            command.Parameters.AddWithValue("@paymentType", paymentType);
+            command.ExecuteNonQuery();
         }
     }
 }

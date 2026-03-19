@@ -41,6 +41,9 @@
             taxLabel = new Label();
             subtotalLabel = new Label();
             button2 = new Button();
+            paymentsLabel = new Label();
+            balanceDueLabel = new Label();
+            payButton = new Button();
             SuspendLayout();
             // 
             // button1
@@ -102,7 +105,7 @@
             orderedItemsListbox.FormattingEnabled = true;
             orderedItemsListbox.Location = new Point(88, 130);
             orderedItemsListbox.Name = "orderedItemsListbox";
-            orderedItemsListbox.Size = new Size(562, 1476);
+            orderedItemsListbox.Size = new Size(562, 1444);
             orderedItemsListbox.TabIndex = 7;
             // 
             // deleteItemButton
@@ -117,7 +120,7 @@
             // 
             // modificationsTextBox
             // 
-            modificationsTextBox.Location = new Point(88, 1806);
+            modificationsTextBox.Location = new Point(88, 1840);
             modificationsTextBox.Name = "modificationsTextBox";
             modificationsTextBox.PlaceholderText = "Enter Modifications Here:";
             modificationsTextBox.Size = new Size(562, 39);
@@ -135,7 +138,7 @@
             // 
             // totalLabel
             // 
-            totalLabel.Location = new Point(212, 1724);
+            totalLabel.Location = new Point(212, 1700);
             totalLabel.Name = "totalLabel";
             totalLabel.Size = new Size(444, 32);
             totalLabel.TabIndex = 11;
@@ -144,7 +147,7 @@
             // 
             // taxLabel
             // 
-            taxLabel.Location = new Point(174, 1674);
+            taxLabel.Location = new Point(174, 1654);
             taxLabel.Name = "taxLabel";
             taxLabel.Size = new Size(482, 32);
             taxLabel.TabIndex = 12;
@@ -154,7 +157,7 @@
             // subtotalLabel
             // 
             subtotalLabel.Anchor = AnchorStyles.Right;
-            subtotalLabel.Location = new Point(156, 1624);
+            subtotalLabel.Location = new Point(156, 1603);
             subtotalLabel.Name = "subtotalLabel";
             subtotalLabel.Size = new Size(500, 32);
             subtotalLabel.TabIndex = 13;
@@ -164,7 +167,7 @@
             // button2
             // 
             button2.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            button2.Location = new Point(1194, 1782);
+            button2.Location = new Point(1300, 1782);
             button2.Name = "button2";
             button2.Size = new Size(191, 157);
             button2.TabIndex = 14;
@@ -172,11 +175,43 @@
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
+            // paymentsLabel
+            // 
+            paymentsLabel.Location = new Point(212, 1745);
+            paymentsLabel.Name = "paymentsLabel";
+            paymentsLabel.Size = new Size(444, 32);
+            paymentsLabel.TabIndex = 15;
+            paymentsLabel.Text = "Payments Applied: $0.00";
+            paymentsLabel.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // balanceDueLabel
+            // 
+            balanceDueLabel.Location = new Point(212, 1794);
+            balanceDueLabel.Name = "balanceDueLabel";
+            balanceDueLabel.Size = new Size(444, 32);
+            balanceDueLabel.TabIndex = 16;
+            balanceDueLabel.Text = "Balance Due: $0.00";
+            balanceDueLabel.TextAlign = ContentAlignment.MiddleRight;
+            // 
+            // payButton
+            // 
+            payButton.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            payButton.Location = new Point(1530, 1782);
+            payButton.Name = "payButton";
+            payButton.Size = new Size(191, 157);
+            payButton.TabIndex = 17;
+            payButton.Text = "Pay Check";
+            payButton.UseVisualStyleBackColor = true;
+            payButton.Click += payButton_Click;
+            // 
             // OrderScreen
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Info;
+            Controls.Add(payButton);
+            Controls.Add(balanceDueLabel);
+            Controls.Add(paymentsLabel);
             Controls.Add(button2);
             Controls.Add(subtotalLabel);
             Controls.Add(taxLabel);
@@ -213,5 +248,8 @@
         private Label taxLabel;
         private Label subtotalLabel;
         private Button button2;
+        private Label paymentsLabel;
+        private Label balanceDueLabel;
+        private Button payButton;
     }
 }
