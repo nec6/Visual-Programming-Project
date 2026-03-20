@@ -37,6 +37,9 @@
             customCashTB = new TextBox();
             applyCustomCash = new Button();
             button2 = new Button();
+            cardNumberTB = new TextBox();
+            cardAmountTB = new TextBox();
+            cardPaymentButton = new Button();
             SuspendLayout();
             // 
             // label1
@@ -53,7 +56,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(762, 108);
+            label2.Location = new Point(854, 108);
             label2.Name = "label2";
             label2.Size = new Size(137, 65);
             label2.TabIndex = 1;
@@ -61,51 +64,55 @@
             // 
             // tenDollarCash
             // 
-            tenDollarCash.Location = new Point(140, 228);
+            tenDollarCash.BackgroundImage = Properties.Resources.tenBill1;
+            tenDollarCash.BackgroundImageLayout = ImageLayout.Zoom;
+            tenDollarCash.Location = new Point(28, 228);
             tenDollarCash.Name = "tenDollarCash";
-            tenDollarCash.Size = new Size(164, 124);
+            tenDollarCash.Size = new Size(291, 124);
             tenDollarCash.TabIndex = 2;
             tenDollarCash.Tag = "10";
-            tenDollarCash.Text = "$10";
             tenDollarCash.UseVisualStyleBackColor = true;
             tenDollarCash.Click += applyPaymentButton_Click;
             // 
             // fiftyCashButton
             // 
-            fiftyCashButton.Location = new Point(140, 420);
+            fiftyCashButton.BackgroundImage = Properties.Resources.fifty;
+            fiftyCashButton.BackgroundImageLayout = ImageLayout.Zoom;
+            fiftyCashButton.Location = new Point(28, 398);
             fiftyCashButton.Name = "fiftyCashButton";
-            fiftyCashButton.Size = new Size(164, 124);
+            fiftyCashButton.Size = new Size(291, 124);
             fiftyCashButton.TabIndex = 3;
             fiftyCashButton.Tag = "50";
-            fiftyCashButton.Text = "$50";
             fiftyCashButton.UseVisualStyleBackColor = true;
             fiftyCashButton.Click += applyPaymentButton_Click;
             // 
             // twentyCashButton
             // 
-            twentyCashButton.Location = new Point(358, 228);
+            twentyCashButton.BackgroundImage = Properties.Resources.twenty;
+            twentyCashButton.BackgroundImageLayout = ImageLayout.Zoom;
+            twentyCashButton.Location = new Point(340, 228);
             twentyCashButton.Name = "twentyCashButton";
-            twentyCashButton.Size = new Size(164, 124);
+            twentyCashButton.Size = new Size(291, 124);
             twentyCashButton.TabIndex = 4;
             twentyCashButton.Tag = "20";
-            twentyCashButton.Text = "$20";
             twentyCashButton.UseVisualStyleBackColor = true;
             twentyCashButton.Click += applyPaymentButton_Click;
             // 
             // hundredCashButton
             // 
-            hundredCashButton.Location = new Point(358, 420);
+            hundredCashButton.BackgroundImage = Properties.Resources.hundred;
+            hundredCashButton.BackgroundImageLayout = ImageLayout.Zoom;
+            hundredCashButton.Location = new Point(340, 398);
             hundredCashButton.Name = "hundredCashButton";
-            hundredCashButton.Size = new Size(164, 124);
+            hundredCashButton.Size = new Size(291, 124);
             hundredCashButton.TabIndex = 5;
             hundredCashButton.Tag = "100";
-            hundredCashButton.Text = "$100";
             hundredCashButton.UseVisualStyleBackColor = true;
             hundredCashButton.Click += applyPaymentButton_Click;
             // 
             // customCashTB
             // 
-            customCashTB.Location = new Point(140, 596);
+            customCashTB.Location = new Point(140, 580);
             customCashTB.Name = "customCashTB";
             customCashTB.PlaceholderText = "Enter Cash Amount:";
             customCashTB.Size = new Size(382, 39);
@@ -113,7 +120,7 @@
             // 
             // applyCustomCash
             // 
-            applyCustomCash.Location = new Point(140, 678);
+            applyCustomCash.Location = new Point(140, 662);
             applyCustomCash.Name = "applyCustomCash";
             applyCustomCash.Size = new Size(382, 72);
             applyCustomCash.TabIndex = 7;
@@ -131,11 +138,40 @@
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
+            // cardNumberTB
+            // 
+            cardNumberTB.Location = new Point(764, 271);
+            cardNumberTB.Name = "cardNumberTB";
+            cardNumberTB.PlaceholderText = "16 Digit Card Number:";
+            cardNumberTB.Size = new Size(322, 39);
+            cardNumberTB.TabIndex = 9;
+            // 
+            // cardAmountTB
+            // 
+            cardAmountTB.Location = new Point(764, 441);
+            cardAmountTB.Name = "cardAmountTB";
+            cardAmountTB.PlaceholderText = "Card Payment Amount:";
+            cardAmountTB.Size = new Size(322, 39);
+            cardAmountTB.TabIndex = 10;
+            // 
+            // cardPaymentButton
+            // 
+            cardPaymentButton.Location = new Point(732, 662);
+            cardPaymentButton.Name = "cardPaymentButton";
+            cardPaymentButton.Size = new Size(382, 72);
+            cardPaymentButton.TabIndex = 11;
+            cardPaymentButton.Text = "Apply Card Payment";
+            cardPaymentButton.UseVisualStyleBackColor = true;
+            cardPaymentButton.Click += cardPaymentButton_Click;
+            // 
             // paymentsScreen
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1269, 872);
+            Controls.Add(cardPaymentButton);
+            Controls.Add(cardAmountTB);
+            Controls.Add(cardNumberTB);
             Controls.Add(button2);
             Controls.Add(applyCustomCash);
             Controls.Add(customCashTB);
@@ -164,5 +200,8 @@
         private TextBox customCashTB;
         private Button applyCustomCash;
         private Button button2;
+        private TextBox cardNumberTB;
+        private TextBox cardAmountTB;
+        private Button cardPaymentButton;
     }
 }

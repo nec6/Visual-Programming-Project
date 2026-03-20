@@ -17,6 +17,7 @@ namespace restaurantPOS
             InitializeComponent();
             this.orderNum = orderNum;
             this.balanceDue = balanceDue;
+            cardAmountTB.Text = balanceDue.ToString("0.00"); // Autofill in balance due in credit card payment textbox
         }
 
         private void applyPaymentButton_Click(object sender, EventArgs e)
@@ -42,15 +43,50 @@ namespace restaurantPOS
         {
             decimal paymentAmount;
 
-            paymentAmount = Convert.ToDecimal(customCashTB.Text);
+            paymentAmount = Math.Round(Convert.ToDecimal(customCashTB.Text), 2);
 
-            if (balanceDue - paymentAmount < 0)
+            if (paymentAmount <= 0) // Do nothing if a negative or zero payment is entered
             {
-                MessageBox.Show("Payment amount exceeds balance due. Please enter a valid amount." + ( balanceDue - paymentAmount));
+                customCashTB.Text = "";
+                return;
+            }
+
+            if (Math.Round((balanceDue - paymentAmount), 2) < 0)
+            {
+                MessageBox.Show("Payment amount exceeds balance due. Please enter a valid amount." + (balanceDue - paymentAmount));
                 return;
             }
             DatabaseHandler.ApplyPayment(orderNum, paymentAmount, "Cash");
             balanceDue -= paymentAmount;
+            customCashTB.Text = "";
+        }
+
+        private void cardPaymentButton_Click(object sender, EventArgs e)
+        {
+            string cardNumber = cardNumberTB.Text;
+            if (cardNumber.Length != 16)
+            {
+                MessageBox.Show("Please enter a valid 16-digit card number.");
+                return;
+            }
+
+            decimal paymentAmount;
+            paymentAmount = Math.Round(Convert.ToDecimal(cardAmountTB.Text), 2);
+
+            if (paymentAmount <= 0) // Do nothing if a negative or zero payment is entered
+            {
+                cardAmountTB.Text = "";
+                return;
+            }
+
+            if (Math.Round((balanceDue - paymentAmount), 2) < 0)
+            {
+                MessageBox.Show("Payment amount exceeds balance due. Please enter a valid amount." + (balanceDue - paymentAmount));
+                return;
+            }
+            DatabaseHandler.ApplyPayment(orderNum, paymentAmount, "Card-" + cardNumber);
+            balanceDue -= paymentAmount;
+            cardAmountTB.Text = "";
         }
     }
 }

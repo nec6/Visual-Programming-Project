@@ -425,6 +425,8 @@ namespace restaurantPOS
             command.Parameters.AddWithValue("@paymentType", paymentType);
             command.ExecuteNonQuery();
         }
+
+        
     }
 }
 
