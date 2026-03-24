@@ -24,7 +24,65 @@ namespace restaurantPOS
 
         private void employeeSalesButton_Click(object sender, EventArgs e)
         {
+            salesPanel.Controls.Clear();
+
             employeeCategoryLabel.Text = "Employee Name";
+
+            Dictionary<int, decimal> employeeSales = new Dictionary<int, decimal>();
+
+            employeeSales = DatabaseHandler.GetSalesByEmployee();
+
+            int i = 0;
+            foreach (KeyValuePair<int, decimal> entry in employeeSales)
+            {
+                string employeeName = DatabaseHandler.GetEmployeeName(entry.Key);
+                decimal salesAmount = entry.Value;
+                string backColor = (i % 2 == 0) ? Color.LightGray.Name : Color.LightBlue.Name; // Alternate row colors for readability based on even or odd.
+                i++;
+
+                Panel row = new Panel
+                {
+                    Width = salesPanel.Width - 20,
+                    Height = 40,
+                    // Margin = new Padding(5)
+                    Padding = new Padding(200, 0, 200, 0),
+                    BackColor = Color.FromName(backColor)
+                };
+
+                int contentWidth = row.Width - row.Padding.Left - row.Padding.Right; // Used to push report labels inward.
+
+                Label nameLabel = new Label
+                {
+                    Text = employeeName,
+                    AutoSize = false,
+                    Width = contentWidth / 2,
+                    Left = row.Padding.Left,
+                    Height = row.Height,
+                    Font = new Font("Arial", 10, FontStyle.Bold),
+                    TextAlign = ContentAlignment.MiddleLeft,
+                };
+
+                Label salesLabel = new Label
+                {
+                    Text = $"${salesAmount:F2}",
+                    AutoSize = false,
+                    Width = contentWidth / 2,
+                    Height = row.Height,
+                    Left = row.Width / 2,
+                    Font = new Font("Arial", 10, FontStyle.Bold),
+                    TextAlign = ContentAlignment.MiddleRight,
+                };
+
+                row.Controls.Add(nameLabel);
+                row.Controls.Add(salesLabel);
+                salesPanel.Controls.Add(row);
+            }
+        }
+
+        private void foodSalesButton_Click(object sender, EventArgs e)
+        {
+            salesPanel.Controls.Clear();
+            employeeCategoryLabel.Text = "Category";
         }
     }
 }

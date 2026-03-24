@@ -32,7 +32,7 @@
             employeeSalesButton = new Button();
             exitButton = new Button();
             employeeCategoryLabel = new Label();
-            flowLayoutPanel1 = new FlowLayoutPanel();
+            salesPanel = new FlowLayoutPanel();
             salesLabel = new Label();
             SuspendLayout();
             // 
@@ -44,6 +44,7 @@
             foodSalesButton.TabIndex = 0;
             foodSalesButton.Text = "Sales by Category";
             foodSalesButton.UseVisualStyleBackColor = true;
+            foodSalesButton.Click += foodSalesButton_Click;
             // 
             // employeeSalesButton
             // 
@@ -75,13 +76,16 @@
             employeeCategoryLabel.TabIndex = 3;
             employeeCategoryLabel.Text = "Sales Type";
             // 
-            // flowLayoutPanel1
+            // salesPanel
             // 
-            flowLayoutPanel1.BorderStyle = BorderStyle.FixedSingle;
-            flowLayoutPanel1.Location = new Point(28, 160);
-            flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(2156, 1508);
-            flowLayoutPanel1.TabIndex = 4;
+            salesPanel.AutoScroll = true;
+            salesPanel.BorderStyle = BorderStyle.FixedSingle;
+            salesPanel.FlowDirection = FlowDirection.TopDown;
+            salesPanel.Location = new Point(28, 160);
+            salesPanel.Name = "salesPanel";
+            salesPanel.Size = new Size(2156, 1508);
+            salesPanel.TabIndex = 4;
+            salesPanel.WrapContents = false;
             // 
             // salesLabel
             // 
@@ -98,7 +102,7 @@
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(salesLabel);
-            Controls.Add(flowLayoutPanel1);
+            Controls.Add(salesPanel);
             Controls.Add(employeeCategoryLabel);
             Controls.Add(exitButton);
             Controls.Add(employeeSalesButton);
@@ -117,7 +121,7 @@
         private Button employeeSalesButton;
         private Button exitButton;
         private Label employeeCategoryLabel;
-        private FlowLayoutPanel flowLayoutPanel1;
+        private FlowLayoutPanel salesPanel;
         private Label salesLabel;
     }
 }
