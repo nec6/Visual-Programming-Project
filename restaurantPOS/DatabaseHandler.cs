@@ -426,7 +426,26 @@ namespace restaurantPOS
             command.ExecuteNonQuery();
         }
 
-        
+        public static Dictionary<int, decimal> GetSalesByEmployee() // Return a dictionary of closed check sales per employee.
+        {
+            Dictionary<int, decimal> salesByEmployee = new Dictionary<int, decimal>();
+
+            using var connection = new SqliteConnection("Data Source=pos.db");
+            connection.Open();
+
+            string sqlString = @"SELECT employeeID, SUM(total) as totalSales FROM Orders WHERE status = 'Closed' GROUP BY employeeID";
+            using SqliteCommand command = new SqliteCommand(sqlString, connection);
+            using var databaseReader = command.ExecuteReader();
+
+            while(databaseReader.Read())
+            {
+                int employeeID = Convert.ToInt32(databaseReader["employeeID"]);
+                decimal totalSales = Convert.ToDecimal(databaseReader["totalSales"]);
+                salesByEmployee[employeeID] = totalSales;
+            }
+
+            return salesByEmployee;
+        }
     }
 }
 

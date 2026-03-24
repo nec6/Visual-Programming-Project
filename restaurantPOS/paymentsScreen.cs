@@ -12,18 +12,20 @@ namespace restaurantPOS
     {
         int orderNum;
         decimal balanceDue;
+        decimal paymentsApplied = 0;
         public paymentsScreen(int orderNum, decimal balanceDue)
         {
             InitializeComponent();
             this.orderNum = orderNum;
             this.balanceDue = balanceDue;
             cardAmountTB.Text = balanceDue.ToString("0.00"); // Autofill in balance due in credit card payment textbox
+            updatePaymentInfo();
         }
 
         private void applyPaymentButton_Click(object sender, EventArgs e)
         {
             Button clickedButton = (Button)sender;
-            decimal paymentAmount = Convert.ToDecimal(clickedButton.Tag);
+            decimal paymentAmount = Convert.ToDecimal(clickedButton.Tag); // Gets payment amount from button's Tag.
 
             if (balanceDue - paymentAmount < 0)
             {
@@ -32,6 +34,8 @@ namespace restaurantPOS
             }
             DatabaseHandler.ApplyPayment(orderNum, paymentAmount, "Cash");
             balanceDue -= paymentAmount;
+            paymentsApplied += paymentAmount;
+            updatePaymentInfo();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -43,7 +47,14 @@ namespace restaurantPOS
         {
             decimal paymentAmount;
 
-            paymentAmount = Math.Round(Convert.ToDecimal(customCashTB.Text), 2);
+            try
+            {
+                paymentAmount = Math.Round(Convert.ToDecimal(customCashTB.Text), 2);
+            }
+            catch
+            {
+                paymentAmount = 0;
+            }
 
             if (paymentAmount <= 0) // Do nothing if a negative or zero payment is entered
             {
@@ -58,6 +69,8 @@ namespace restaurantPOS
             }
             DatabaseHandler.ApplyPayment(orderNum, paymentAmount, "Cash");
             balanceDue -= paymentAmount;
+            paymentsApplied += paymentAmount;
+            updatePaymentInfo();
             customCashTB.Text = "";
         }
 
@@ -71,7 +84,14 @@ namespace restaurantPOS
             }
 
             decimal paymentAmount;
-            paymentAmount = Math.Round(Convert.ToDecimal(cardAmountTB.Text), 2);
+            try
+            {
+                paymentAmount = Math.Round(Convert.ToDecimal(cardAmountTB.Text), 2);
+            }
+            catch
+            {
+                paymentAmount = 0;
+            }
 
             if (paymentAmount <= 0) // Do nothing if a negative or zero payment is entered
             {
@@ -86,7 +106,16 @@ namespace restaurantPOS
             }
             DatabaseHandler.ApplyPayment(orderNum, paymentAmount, "Card-" + cardNumber);
             balanceDue -= paymentAmount;
+            paymentsApplied += paymentAmount;
+            updatePaymentInfo();
             cardAmountTB.Text = "";
+        }
+
+        private void updatePaymentInfo()
+        {
+            appliedPaymentsLabel.Text = "Payments Applied: $" + paymentsApplied.ToString("0.00");
+            balanceDueLabel.Text = "Balance Due: $" + balanceDue.ToString("0.00");
+
         }
     }
 }

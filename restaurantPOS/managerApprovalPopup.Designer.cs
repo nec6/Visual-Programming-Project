@@ -37,7 +37,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(691, 550);
+            label1.Location = new Point(211, 230);
             label1.Name = "label1";
             label1.Size = new Size(872, 128);
             label1.TabIndex = 0;
@@ -45,7 +45,7 @@
             // 
             // idTextbox
             // 
-            idTextbox.Location = new Point(1011, 772);
+            idTextbox.Location = new Point(521, 400);
             idTextbox.Name = "idTextbox";
             idTextbox.PlaceholderText = "Enter ID:";
             idTextbox.Size = new Size(200, 39);
@@ -54,7 +54,7 @@
             // button1
             // 
             button1.DialogResult = DialogResult.OK;
-            button1.Location = new Point(973, 898);
+            button1.Location = new Point(479, 502);
             button1.Name = "button1";
             button1.Size = new Size(276, 132);
             button1.TabIndex = 2;
@@ -66,7 +66,7 @@
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(2219, 1966);
+            ClientSize = new Size(1269, 872);
             Controls.Add(button1);
             Controls.Add(idTextbox);
             Controls.Add(label1);

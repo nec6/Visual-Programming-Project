@@ -16,5 +16,15 @@ namespace restaurantPOS
         {
             InitializeComponent();
         }
+
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            ViewChanger.ChangeView(new LoginScreen()); // Return to login screen when exit button is clicked.
+        }
+
+        private void employeeSalesButton_Click(object sender, EventArgs e)
+        {
+            employeeCategoryLabel.Text = "Employee Name";
+        }
     }
 }

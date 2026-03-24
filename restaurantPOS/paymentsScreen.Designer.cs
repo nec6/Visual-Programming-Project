@@ -40,6 +40,8 @@
             cardNumberTB = new TextBox();
             cardAmountTB = new TextBox();
             cardPaymentButton = new Button();
+            appliedPaymentsLabel = new Label();
+            balanceDueLabel = new Label();
             SuspendLayout();
             // 
             // label1
@@ -130,7 +132,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(520, 782);
+            button2.Location = new Point(964, 775);
             button2.Name = "button2";
             button2.Size = new Size(150, 46);
             button2.TabIndex = 8;
@@ -164,11 +166,31 @@
             cardPaymentButton.UseVisualStyleBackColor = true;
             cardPaymentButton.Click += cardPaymentButton_Click;
             // 
+            // appliedPaymentsLabel
+            // 
+            appliedPaymentsLabel.AutoSize = true;
+            appliedPaymentsLabel.Location = new Point(480, 764);
+            appliedPaymentsLabel.Name = "appliedPaymentsLabel";
+            appliedPaymentsLabel.Size = new Size(274, 32);
+            appliedPaymentsLabel.TabIndex = 12;
+            appliedPaymentsLabel.Text = "Applied Payments: $0.00";
+            // 
+            // balanceDueLabel
+            // 
+            balanceDueLabel.AutoSize = true;
+            balanceDueLabel.Location = new Point(443, 808);
+            balanceDueLabel.Name = "balanceDueLabel";
+            balanceDueLabel.Size = new Size(336, 32);
+            balanceDueLabel.TabIndex = 13;
+            balanceDueLabel.Text = "Remaining Balance Due: $0.00";
+            // 
             // paymentsScreen
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1269, 872);
+            Controls.Add(balanceDueLabel);
+            Controls.Add(appliedPaymentsLabel);
             Controls.Add(cardPaymentButton);
             Controls.Add(cardAmountTB);
             Controls.Add(cardNumberTB);
@@ -203,5 +225,7 @@
         private TextBox cardNumberTB;
         private TextBox cardAmountTB;
         private Button cardPaymentButton;
+        private Label appliedPaymentsLabel;
+        private Label balanceDueLabel;
     }
 }
