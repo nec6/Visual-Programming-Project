@@ -42,7 +42,7 @@
             foodSalesButton.Name = "foodSalesButton";
             foodSalesButton.Size = new Size(352, 158);
             foodSalesButton.TabIndex = 0;
-            foodSalesButton.Text = "Sales by Category";
+            foodSalesButton.Text = "Sales by Item";
             foodSalesButton.UseVisualStyleBackColor = true;
             foodSalesButton.Click += foodSalesButton_Click;
             // 

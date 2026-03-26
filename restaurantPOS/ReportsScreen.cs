@@ -82,7 +82,69 @@ namespace restaurantPOS
         private void foodSalesButton_Click(object sender, EventArgs e)
         {
             salesPanel.Controls.Clear();
-            employeeCategoryLabel.Text = "Category";
+            employeeCategoryLabel.Text = "Menu Item";
+            List<itemSales> itemSalesTotals = new List<itemSales>();
+
+            itemSalesTotals = DatabaseHandler.GetSalesByItem();
+
+            int i = 0;
+            foreach (itemSales item in itemSalesTotals)
+            {
+                string menuItem = item.menuItem;
+                int quantity = item.quantity;
+                decimal sales = item.totalSales;
+                string backColor = (i % 2 == 0) ? Color.LightGray.Name : Color.LightBlue.Name; // Alternate row colors for readability based on even or odd.
+                i++;
+
+                Panel row = new Panel
+                {
+                    Width = salesPanel.Width - 20,
+                    Height = 40,
+                    // Margin = new Padding(5)
+                    Padding = new Padding(200, 0, 200, 0),
+                    BackColor = Color.FromName(backColor)
+                };
+
+                int contentWidth = row.Width - row.Padding.Left - row.Padding.Right; // Used to push report labels inward.
+
+                Label nameLabel = new Label
+                {
+                    Text = menuItem,
+                    AutoSize = false,
+                    Width = contentWidth / 3,
+                    Left = row.Padding.Left,
+                    Height = row.Height,
+                    Font = new Font("Arial", 10, FontStyle.Bold),
+                    TextAlign = ContentAlignment.MiddleLeft,
+                };
+
+                Label quantityLabel = new Label
+                {
+                    Text = "" + quantity,
+                    AutoSize = false,
+                    Width = contentWidth / 3,
+                    Left = row.Padding.Left + (contentWidth / 3),
+                    Height = row.Height,
+                    Font = new Font("Arial", 10, FontStyle.Bold),
+                    TextAlign = ContentAlignment.MiddleLeft,
+                };
+
+                Label salesLabel = new Label
+                {
+                    Text = "" + sales,
+                    AutoSize = false,
+                    Width = contentWidth / 3,
+                    Left = row.Padding.Left + 2 * (contentWidth / 3),
+                    Height = row.Height,
+                    Font = new Font("Arial", 10, FontStyle.Bold),
+                    TextAlign = ContentAlignment.MiddleLeft,
+                };
+
+                row.Controls.Add(nameLabel);
+                row.Controls.Add(quantityLabel);
+                row.Controls.Add(salesLabel);
+                salesPanel.Controls.Add(row);
+            }
         }
     }
 }

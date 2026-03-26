@@ -1,5 +1,6 @@
 ﻿using Microsoft.Data.Sqlite;
 using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
 using System.Data.SqlTypes;
 using System.Diagnostics;
@@ -23,8 +24,17 @@ namespace restaurantPOS
             return $"{itemName} - ${price}";
         }
     }
+
+    public struct itemSales
+    {
+        public string menuItem;
+        public int quantity;
+        public decimal totalSales;
+    }
+
     public static class DatabaseHandler
     {
+
         public static void Initialize()
         {
             using var connection = new SqliteConnection("Data Source=pos.db");
@@ -445,6 +455,27 @@ namespace restaurantPOS
             }
 
             return salesByEmployee;
+        }
+
+        public static List<itemSales> GetSalesByItem()
+        {
+            List<itemSales> salesByCategory = new List<itemSales>();
+
+            using var connection = new SqliteConnection("Data Source=pos.db");
+            connection.Open();
+
+            string sqlString = @"SELECT menuItem, SUM(itemTotalPrice) as itemSales, SUM(quantity) as itemQuantity FROM orderItems GROUP BY menuItem";
+            using SqliteCommand command = new SqliteCommand(sqlString, connection);
+            using var databaseReader = command.ExecuteReader();
+
+            while (databaseReader.Read()) {
+                itemSales item = new itemSales();
+                item.menuItem = "" + databaseReader["menuItem"];
+                item.totalSales = Convert.ToDecimal(databaseReader["itemSales"]);
+                item.quantity = Convert.ToInt32(databaseReader["itemQuantity"]);
+                salesByCategory.Add(item);
+            }
+            return salesByCategory;
         }
     }
 }
