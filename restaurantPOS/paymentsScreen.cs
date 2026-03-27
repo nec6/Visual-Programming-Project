@@ -36,6 +36,7 @@ namespace restaurantPOS
             balanceDue -= paymentAmount;
             paymentsApplied += paymentAmount;
             updatePaymentInfo();
+            cardAmountTB.Text = balanceDue.ToString("0.00");
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -72,6 +73,8 @@ namespace restaurantPOS
             paymentsApplied += paymentAmount;
             updatePaymentInfo();
             customCashTB.Text = "";
+            cardNumberTB.Text = "";
+            cardAmountTB.Text = balanceDue.ToString("0.00");
         }
 
         private void cardPaymentButton_Click(object sender, EventArgs e)
@@ -108,7 +111,8 @@ namespace restaurantPOS
             balanceDue -= paymentAmount;
             paymentsApplied += paymentAmount;
             updatePaymentInfo();
-            cardAmountTB.Text = "";
+            cardAmountTB.Text = balanceDue.ToString("0.00");
+            cardNumberTB.Text = "";
         }
 
         private void updatePaymentInfo()

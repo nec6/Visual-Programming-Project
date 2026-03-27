@@ -168,14 +168,18 @@ namespace restaurantPOS
 
         private void deleteItemButton_Click(object sender, EventArgs e)
         {
-            if (orderedItemsListbox.SelectedItem is not orderItem)
+            if (orderedItemsListbox.SelectedItem is not orderItem) // Remove modificition instead of item if modification is selected when delete button is pressed.
             {
-                return; // Do nothing if selected item is modification and not the item itself
-            }
+                if (orderedItemsListbox.SelectedIndex == -1) // Stop program from crashing when delete button is pressed but no item is selected.
+                {
+                    return;
+                }
 
-            if (orderedItemsListbox.SelectedIndex == -1) // Stop program from crashing when delete button is pressed but no item is selected.
-            {
-                return;
+                orderItem selectedItem = (orderItem)orderedItemsListbox.Items[orderedItemsListbox.SelectedIndex - 1]; // Select the item on the row above to remove modification from
+                int itemToModify = selectedItem.orderItemID;
+                DatabaseHandler.AddModification(itemToModify, ""); // Remove modification by setting it to empty string.
+                loadOrderedItems(orderNum);
+                return; 
             }
 
             if (DatabaseHandler.GetEmployeeType(employeeID) == "Manager") // Only allows managers to delete items.
@@ -237,6 +241,26 @@ namespace restaurantPOS
             var popup = new paymentsScreen(orderNum, balanceDue);
             popup.ShowDialog();
             loadOrderedItems(orderNum); // Refresh order screen after closing payments screen to update balance due and applied payments.
+        }
+
+        private void repeatButton_Click(object sender, EventArgs e)
+        {
+            if (orderedItemsListbox.SelectedItem is not orderItem)
+            {
+                return; // Do nothing if selected item is modification and not the item itself
+            }
+
+            if (orderedItemsListbox.SelectedIndex == -1) // Stop program from crashing when delete button is pressed but no item is selected.
+            {
+                return;
+            }
+
+            string itemToAdd = orderedItemsListbox.SelectedItem + "";
+            itemToAdd = itemToAdd.Split('-')[0].Trim(); // Remove the price from the string so it matches the database entry.
+            DatabaseHandler.AddItemToOrder(tableNum, itemToAdd, orderNum);
+            DatabaseHandler.updateOrderTotal(orderNum);
+            loadOrderedItems(orderNum);
+
         }
     }
 }

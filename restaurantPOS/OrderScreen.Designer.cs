@@ -44,6 +44,7 @@
             paymentsLabel = new Label();
             balanceDueLabel = new Label();
             payButton = new Button();
+            repeatButton = new Button();
             SuspendLayout();
             // 
             // button1
@@ -120,7 +121,7 @@
             // 
             // modificationsTextBox
             // 
-            modificationsTextBox.Location = new Point(88, 1840);
+            modificationsTextBox.Location = new Point(88, 1802);
             modificationsTextBox.Name = "modificationsTextBox";
             modificationsTextBox.PlaceholderText = "Enter Modifications Here:";
             modificationsTextBox.Size = new Size(562, 39);
@@ -128,7 +129,7 @@
             // 
             // modifyButton
             // 
-            modifyButton.Location = new Point(260, 1881);
+            modifyButton.Location = new Point(284, 1881);
             modifyButton.Name = "modifyButton";
             modifyButton.Size = new Size(166, 58);
             modifyButton.TabIndex = 10;
@@ -138,7 +139,7 @@
             // 
             // totalLabel
             // 
-            totalLabel.Location = new Point(212, 1700);
+            totalLabel.Location = new Point(212, 1667);
             totalLabel.Name = "totalLabel";
             totalLabel.Size = new Size(444, 32);
             totalLabel.TabIndex = 11;
@@ -147,7 +148,7 @@
             // 
             // taxLabel
             // 
-            taxLabel.Location = new Point(174, 1654);
+            taxLabel.Location = new Point(174, 1635);
             taxLabel.Name = "taxLabel";
             taxLabel.Size = new Size(482, 32);
             taxLabel.TabIndex = 12;
@@ -177,7 +178,7 @@
             // 
             // paymentsLabel
             // 
-            paymentsLabel.Location = new Point(212, 1745);
+            paymentsLabel.Location = new Point(212, 1699);
             paymentsLabel.Name = "paymentsLabel";
             paymentsLabel.Size = new Size(444, 32);
             paymentsLabel.TabIndex = 15;
@@ -186,7 +187,7 @@
             // 
             // balanceDueLabel
             // 
-            balanceDueLabel.Location = new Point(212, 1794);
+            balanceDueLabel.Location = new Point(212, 1731);
             balanceDueLabel.Name = "balanceDueLabel";
             balanceDueLabel.Size = new Size(444, 32);
             balanceDueLabel.TabIndex = 16;
@@ -204,11 +205,22 @@
             payButton.UseVisualStyleBackColor = true;
             payButton.Click += payButton_Click;
             // 
+            // repeatButton
+            // 
+            repeatButton.Location = new Point(484, 1881);
+            repeatButton.Name = "repeatButton";
+            repeatButton.Size = new Size(166, 58);
+            repeatButton.TabIndex = 18;
+            repeatButton.Text = "Repeat";
+            repeatButton.UseVisualStyleBackColor = true;
+            repeatButton.Click += repeatButton_Click;
+            // 
             // OrderScreen
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Info;
+            Controls.Add(repeatButton);
             Controls.Add(payButton);
             Controls.Add(balanceDueLabel);
             Controls.Add(paymentsLabel);
@@ -251,5 +263,6 @@
         private Label paymentsLabel;
         private Label balanceDueLabel;
         private Button payButton;
+        private Button repeatButton;
     }
 }

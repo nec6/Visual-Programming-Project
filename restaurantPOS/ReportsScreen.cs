@@ -15,6 +15,7 @@ namespace restaurantPOS
         public ReportsScreen()
         {
             InitializeComponent();
+            foodSalesButton_Click(foodSalesButton, EventArgs.Empty); // Used to load the sales by menu item when the reports screen is opened initially.
         }
 
         private void exitButton_Click(object sender, EventArgs e)
@@ -27,6 +28,7 @@ namespace restaurantPOS
             salesPanel.Controls.Clear();
 
             employeeCategoryLabel.Text = "Employee Name";
+            quantityLabel.Hide();
 
             Dictionary<int, decimal> employeeSales = new Dictionary<int, decimal>();
 
@@ -83,6 +85,7 @@ namespace restaurantPOS
         {
             salesPanel.Controls.Clear();
             employeeCategoryLabel.Text = "Menu Item";
+            quantityLabel.Show();
             List<itemSales> itemSalesTotals = new List<itemSales>();
 
             itemSalesTotals = DatabaseHandler.GetSalesByItem();
@@ -100,7 +103,6 @@ namespace restaurantPOS
                 {
                     Width = salesPanel.Width - 20,
                     Height = 40,
-                    // Margin = new Padding(5)
                     Padding = new Padding(200, 0, 200, 0),
                     BackColor = Color.FromName(backColor)
                 };
@@ -126,18 +128,18 @@ namespace restaurantPOS
                     Left = row.Padding.Left + (contentWidth / 3),
                     Height = row.Height,
                     Font = new Font("Arial", 10, FontStyle.Bold),
-                    TextAlign = ContentAlignment.MiddleLeft,
+                    TextAlign = ContentAlignment.MiddleCenter,
                 };
 
                 Label salesLabel = new Label
                 {
-                    Text = "" + sales,
+                    Text = $"${sales:F2}",
                     AutoSize = false,
                     Width = contentWidth / 3,
                     Left = row.Padding.Left + 2 * (contentWidth / 3),
                     Height = row.Height,
                     Font = new Font("Arial", 10, FontStyle.Bold),
-                    TextAlign = ContentAlignment.MiddleLeft,
+                    TextAlign = ContentAlignment.MiddleRight,
                 };
 
                 row.Controls.Add(nameLabel);

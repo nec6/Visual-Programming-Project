@@ -168,21 +168,21 @@
             // 
             // appliedPaymentsLabel
             // 
-            appliedPaymentsLabel.AutoSize = true;
-            appliedPaymentsLabel.Location = new Point(480, 764);
+            appliedPaymentsLabel.Location = new Point(408, 766);
             appliedPaymentsLabel.Name = "appliedPaymentsLabel";
-            appliedPaymentsLabel.Size = new Size(274, 32);
+            appliedPaymentsLabel.Size = new Size(416, 32);
             appliedPaymentsLabel.TabIndex = 12;
             appliedPaymentsLabel.Text = "Applied Payments: $0.00";
+            appliedPaymentsLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // balanceDueLabel
             // 
-            balanceDueLabel.AutoSize = true;
-            balanceDueLabel.Location = new Point(443, 808);
+            balanceDueLabel.Location = new Point(408, 808);
             balanceDueLabel.Name = "balanceDueLabel";
-            balanceDueLabel.Size = new Size(336, 32);
+            balanceDueLabel.Size = new Size(416, 32);
             balanceDueLabel.TabIndex = 13;
-            balanceDueLabel.Text = "Remaining Balance Due: $0.00";
+            balanceDueLabel.Text = "Balance Due: $0.00";
+            balanceDueLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // paymentsScreen
             // 
