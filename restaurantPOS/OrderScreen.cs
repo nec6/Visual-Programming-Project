@@ -256,7 +256,7 @@ namespace restaurantPOS
             }
 
             string itemToAdd = orderedItemsListbox.SelectedItem + "";
-            itemToAdd = itemToAdd.Split('-')[0].Trim(); // Remove the price from the string so it matches the database entry.
+            itemToAdd = itemToAdd.Split("- $")[0].Trim(); // Remove the price from the string so it matches the database entry.
             DatabaseHandler.AddItemToOrder(tableNum, itemToAdd, orderNum);
             DatabaseHandler.updateOrderTotal(orderNum);
             loadOrderedItems(orderNum);
