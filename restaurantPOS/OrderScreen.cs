@@ -77,6 +77,8 @@ namespace restaurantPOS
             Form1 mainForm = (Form1)Application.OpenForms["Form1"]; // Used to access imageList from in main form.
             ImageList drinkImages = mainForm.imageList1;
 
+            Color[] buttonColors = { Color.LightSalmon, Color.LightGreen, Color.LightBlue, Color.LightPink };
+            int i = 0;
             foreach (string item in menuItems)
             {
                 if (drinkImages.Images.ContainsKey(item)) // Add button with image if the image exists in the imagelist.
@@ -106,13 +108,14 @@ namespace restaurantPOS
                         Height = 100,
                         Margin = new Padding(20),
                         Font = new Font("Arial", 10, FontStyle.Bold),
-                        BackColor = Color.Lavender
+                        BackColor = buttonColors[i % 4]
                     };
 
                     button.Click += MenuItemButton_Click;
 
                     menuItemsPanel.Controls.Add(button);
                 }
+                i++;
             }
         }
 

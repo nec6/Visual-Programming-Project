@@ -83,6 +83,7 @@
             // salesPanel
             // 
             salesPanel.AutoScroll = true;
+            salesPanel.BackColor = SystemColors.Control;
             salesPanel.BorderStyle = BorderStyle.FixedSingle;
             salesPanel.FlowDirection = FlowDirection.TopDown;
             salesPanel.Location = new Point(28, 160);
@@ -115,6 +116,7 @@
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.Info;
             Controls.Add(quantityLabel);
             Controls.Add(salesLabel);
             Controls.Add(salesPanel);

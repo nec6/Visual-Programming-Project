@@ -45,6 +45,7 @@
             button1 = new Button();
             employeeNameLabel = new Label();
             exitButton = new Button();
+            managerMainButton = new Button();
             tablesPanel.SuspendLayout();
             SuspendLayout();
             // 
@@ -250,6 +251,7 @@
             // 
             // exitButton
             // 
+            exitButton.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             exitButton.Location = new Point(1970, 1734);
             exitButton.Name = "exitButton";
             exitButton.Size = new Size(216, 206);
@@ -258,10 +260,23 @@
             exitButton.UseVisualStyleBackColor = true;
             exitButton.Click += exitButton_Click;
             // 
+            // managerMainButton
+            // 
+            managerMainButton.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            managerMainButton.Location = new Point(1970, 146);
+            managerMainButton.Name = "managerMainButton";
+            managerMainButton.Size = new Size(216, 206);
+            managerMainButton.TabIndex = 3;
+            managerMainButton.Text = "Manager Main Screen";
+            managerMainButton.UseVisualStyleBackColor = true;
+            managerMainButton.Click += managerMainButton_Click;
+            // 
             // TableView
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.Info;
+            Controls.Add(managerMainButton);
             Controls.Add(exitButton);
             Controls.Add(employeeNameLabel);
             Controls.Add(tablesPanel);
@@ -292,5 +307,6 @@
         private Button button13;
         private Label employeeNameLabel;
         private Button exitButton;
+        private Button managerMainButton;
     }
 }

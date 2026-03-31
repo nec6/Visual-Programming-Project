@@ -54,6 +54,7 @@
             // button1
             // 
             button1.DialogResult = DialogResult.OK;
+            button1.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button1.Location = new Point(479, 502);
             button1.Name = "button1";
             button1.Size = new Size(276, 132);
@@ -66,6 +67,7 @@
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.InactiveCaption;
             ClientSize = new Size(1269, 872);
             Controls.Add(button1);
             Controls.Add(idTextbox);

@@ -188,6 +188,7 @@
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.InactiveCaption;
             ClientSize = new Size(1269, 872);
             Controls.Add(balanceDueLabel);
             Controls.Add(appliedPaymentsLabel);

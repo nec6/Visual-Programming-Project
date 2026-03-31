@@ -19,11 +19,17 @@ namespace restaurantPOS
             this.employeeID = employeeID;
             string employeeName = DatabaseHandler.GetEmployeeName(employeeID);
             employeeNameLabel.Text = "Logged In: " + employeeName;
-            this.Load += TableView_Load; 
+            this.Load += TableView_Load;
         }
 
         private void TableView_Load(object sender, EventArgs e)
         {
+            string employeeType = DatabaseHandler.GetEmployeeType(employeeID);
+            if (employeeType != "Manager")
+            {
+                managerMainButton.Visible = false; // Hide manager button if logged in employee is not a manager
+            }
+
             foreach (Control item in tablesPanel.Controls)
             {
                 if (item is Button button)
@@ -47,7 +53,7 @@ namespace restaurantPOS
         {
             Button clickedTable = (Button)sender;
             int tableSelected = Convert.ToInt32(clickedTable.Tag);
-            
+
             int orderNum;
             if (DatabaseHandler.OrderExists(tableSelected) == 0)
             {
@@ -68,6 +74,11 @@ namespace restaurantPOS
         private void exitButton_Click(object sender, EventArgs e) // Return to login screen
         {
             ViewChanger.ChangeView(new LoginScreen());
+        }
+
+        private void managerMainButton_Click(object sender, EventArgs e)
+        {
+            ViewChanger.ChangeView(new ManagerMainScreen()); // Go to manager main screen
         }
     }
 }
