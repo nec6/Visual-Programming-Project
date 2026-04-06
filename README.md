@@ -1,1 +1,1 @@
-# restaurantPOS
+Waiting on the menu management and employee management script, so those buttons do not work as of now. A really simple add-in once ready. There are also 4 images for the four buttons on the manager screen that you have to download from this branch and modify ManagerMainScreen.cs (lines 24-33 with your file path of the photos). To log in as a manager, enter "9999"; for an employee, enter "1111".
