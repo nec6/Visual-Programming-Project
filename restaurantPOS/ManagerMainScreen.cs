@@ -45,5 +45,15 @@ namespace restaurantPOS
         {
             ViewChanger.ChangeView(new ReportsScreen());
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            ViewChanger.ChangeView(new EmployeeManagement(employeeID));
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ViewChanger.ChangeView(new MenuManagement(employeeID));
+        }
     }
 }
