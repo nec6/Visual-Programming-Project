@@ -54,6 +54,13 @@ namespace restaurantPOS
         private void button12_Click(object sender, EventArgs e)
         {
             string enteredID = EmployeeID.Text.Trim();
+            int idInteger = Convert.ToInt32(enteredID);
+
+            string employeeType = null;
+            if (DatabaseHandler.EmployeeExists(idInteger) == 1) // Check if employee exists before trying to get type
+            {
+                employeeType = DatabaseHandler.GetEmployeeType(idInteger);
+            }
 
             if (string.IsNullOrEmpty(enteredID))
             {
@@ -61,12 +68,12 @@ namespace restaurantPOS
                 return;
             }
 
-            if (enteredID == "9999")
+            if ((employeeType == "Manager") || (enteredID == "9999"))
             {
                 int employeeID = Convert.ToInt32(enteredID);
                 ViewChanger.ChangeView(new ManagerMainScreen(employeeID));
             }
-            else if (enteredID == "1111" || enteredID == "2222" || enteredID == "3333")
+            else if ((employeeType == "Employee") || enteredID == "1111" || enteredID == "2222" || enteredID == "3333")
             {
                 int employeeID = Convert.ToInt32(enteredID);
                 ViewChanger.ChangeView(new TableView(employeeID));

@@ -477,6 +477,21 @@ namespace restaurantPOS
             }
             return salesByCategory;
         }
+
+        public static int EmployeeExists(int employeeNum) // Check if employee exists..
+        {
+            using var connection = new SqliteConnection("Data Source=pos.db");
+            connection.Open();
+
+            string sqlString = "SELECT EXISTS (SELECT 1 FROM Employees WHERE employeeID = @employeeNum)";
+
+            using SqliteCommand command = new SqliteCommand(sqlString, connection);
+            command.Parameters.AddWithValue("@employeeNum", employeeNum);
+
+            int queryResult = Convert.ToInt32((long)command.ExecuteScalar());
+
+            return queryResult;
+        }
     }
 }
 
