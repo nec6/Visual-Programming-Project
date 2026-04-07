@@ -78,7 +78,7 @@ namespace restaurantPOS
 
         private void managerMainButton_Click(object sender, EventArgs e)
         {
-            ViewChanger.ChangeView(new ManagerMainScreen()); // Go to manager main screen
+            ViewChanger.ChangeView(new ManagerMainScreen(employeeID)); // Go to manager main screen
         }
     }
 }
