@@ -35,50 +35,63 @@
             salesPanel = new FlowLayoutPanel();
             salesLabel = new Label();
             quantityLabel = new Label();
+            panel1 = new Panel();
+            label2 = new Label();
+            button100 = new Button();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // foodSalesButton
             // 
-            foodSalesButton.Font = new Font("Arial", 13.875F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            foodSalesButton.Location = new Point(604, 1722);
+            foodSalesButton.BackColor = Color.FromArgb(192, 255, 192);
+            foodSalesButton.Font = new Font("Arial", 13F, FontStyle.Bold);
+            foodSalesButton.Location = new Point(87, 805);
+            foodSalesButton.Margin = new Padding(2, 1, 2, 1);
             foodSalesButton.Name = "foodSalesButton";
-            foodSalesButton.Size = new Size(352, 158);
+            foodSalesButton.Size = new Size(190, 74);
             foodSalesButton.TabIndex = 0;
             foodSalesButton.Text = "Sales by Item";
-            foodSalesButton.UseVisualStyleBackColor = true;
+            foodSalesButton.UseVisualStyleBackColor = false;
             foodSalesButton.Click += foodSalesButton_Click;
             // 
             // employeeSalesButton
             // 
-            employeeSalesButton.Font = new Font("Arial", 13.875F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            employeeSalesButton.Location = new Point(1213, 1722);
+            employeeSalesButton.BackColor = Color.FromArgb(192, 255, 192);
+            employeeSalesButton.Font = new Font("Arial", 13F, FontStyle.Bold);
+            employeeSalesButton.Location = new Point(305, 805);
+            employeeSalesButton.Margin = new Padding(2, 1, 2, 1);
             employeeSalesButton.Name = "employeeSalesButton";
-            employeeSalesButton.Size = new Size(352, 158);
+            employeeSalesButton.Size = new Size(204, 74);
             employeeSalesButton.TabIndex = 1;
             employeeSalesButton.Text = "Sales by Employee";
-            employeeSalesButton.UseVisualStyleBackColor = true;
+            employeeSalesButton.UseVisualStyleBackColor = false;
             employeeSalesButton.Click += employeeSalesButton_Click;
             // 
             // exitButton
             // 
-            exitButton.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            exitButton.Location = new Point(1966, 1786);
+            exitButton.BackColor = Color.IndianRed;
+            exitButton.Font = new Font("Arial", 13F, FontStyle.Bold);
+            exitButton.Location = new Point(788, 804);
+            exitButton.Margin = new Padding(2, 1, 2, 1);
             exitButton.Name = "exitButton";
-            exitButton.Size = new Size(238, 168);
+            exitButton.Size = new Size(128, 74);
             exitButton.TabIndex = 2;
             exitButton.Text = "Exit";
-            exitButton.UseVisualStyleBackColor = true;
+            exitButton.UseVisualStyleBackColor = false;
             exitButton.Click += exitButton_Click;
             // 
             // employeeCategoryLabel
             // 
-            employeeCategoryLabel.AutoSize = true;
+            employeeCategoryLabel.BackColor = Color.White;
+            employeeCategoryLabel.BorderStyle = BorderStyle.Fixed3D;
             employeeCategoryLabel.Font = new Font("Segoe UI", 16.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            employeeCategoryLabel.Location = new Point(212, 60);
+            employeeCategoryLabel.Location = new Point(139, 120);
+            employeeCategoryLabel.Margin = new Padding(2, 0, 2, 0);
             employeeCategoryLabel.Name = "employeeCategoryLabel";
-            employeeCategoryLabel.Size = new Size(234, 59);
+            employeeCategoryLabel.Size = new Size(138, 41);
             employeeCategoryLabel.TabIndex = 3;
             employeeCategoryLabel.Text = "Sales Type";
+            employeeCategoryLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // salesPanel
             // 
@@ -86,37 +99,80 @@
             salesPanel.BackColor = SystemColors.Control;
             salesPanel.BorderStyle = BorderStyle.FixedSingle;
             salesPanel.FlowDirection = FlowDirection.TopDown;
-            salesPanel.Location = new Point(28, 160);
+            salesPanel.Location = new Point(62, 182);
+            salesPanel.Margin = new Padding(2, 1, 2, 1);
             salesPanel.Name = "salesPanel";
-            salesPanel.Size = new Size(2156, 1508);
+            salesPanel.Size = new Size(869, 592);
             salesPanel.TabIndex = 4;
             salesPanel.WrapContents = false;
             // 
             // salesLabel
             // 
-            salesLabel.AutoSize = true;
+            salesLabel.BackColor = Color.White;
+            salesLabel.BorderStyle = BorderStyle.Fixed3D;
             salesLabel.Font = new Font("Segoe UI", 16.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            salesLabel.Location = new Point(1854, 60);
+            salesLabel.Location = new Point(717, 122);
+            salesLabel.Margin = new Padding(2, 0, 2, 0);
             salesLabel.Name = "salesLabel";
-            salesLabel.Size = new Size(126, 59);
+            salesLabel.Size = new Size(128, 39);
             salesLabel.TabIndex = 5;
             salesLabel.Text = "Sales";
+            salesLabel.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // quantityLabel
             // 
-            quantityLabel.AutoSize = true;
+            quantityLabel.BackColor = Color.White;
+            quantityLabel.BorderStyle = BorderStyle.Fixed3D;
             quantityLabel.Font = new Font("Segoe UI", 16.125F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            quantityLabel.Location = new Point(1000, 60);
+            quantityLabel.Location = new Point(417, 120);
+            quantityLabel.Margin = new Padding(2, 0, 2, 0);
             quantityLabel.Name = "quantityLabel";
-            quantityLabel.Size = new Size(202, 59);
+            quantityLabel.Size = new Size(145, 41);
             quantityLabel.TabIndex = 6;
             quantityLabel.Text = "Quantity";
+            quantityLabel.TextAlign = ContentAlignment.MiddleCenter;
+            // 
+            // panel1
+            // 
+            panel1.BackColor = Color.FromArgb(26, 26, 46);
+            panel1.Controls.Add(label2);
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(993, 50);
+            panel1.TabIndex = 7;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Javanese Text", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = SystemColors.ButtonHighlight;
+            label2.Location = new Point(14, 9);
+            label2.Name = "label2";
+            label2.Size = new Size(160, 34);
+            label2.TabIndex = 0;
+            label2.Text = "RESTAURANT POS";
+            // 
+            // button100
+            // 
+            button100.BackColor = Color.LightYellow;
+            button100.Font = new Font("Arial", 13F, FontStyle.Bold);
+            button100.Location = new Point(557, 804);
+            button100.Name = "button100";
+            button100.Size = new Size(194, 74);
+            button100.TabIndex = 8;
+            button100.Text = "Go Back";
+            button100.UseVisualStyleBackColor = false;
+            button100.Click += button100_Click;
             // 
             // ReportsScreen
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.Info;
+            AutoScroll = true;
+            BackColor = Color.PaleGoldenrod;
+            Controls.Add(button100);
+            Controls.Add(panel1);
             Controls.Add(quantityLabel);
             Controls.Add(salesLabel);
             Controls.Add(salesPanel);
@@ -124,11 +180,12 @@
             Controls.Add(exitButton);
             Controls.Add(employeeSalesButton);
             Controls.Add(foodSalesButton);
-            Margin = new Padding(3, 4, 3, 4);
+            Margin = new Padding(2);
             Name = "ReportsScreen";
-            Size = new Size(2219, 1966);
+            Size = new Size(993, 922);
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
 
         }
 
@@ -141,5 +198,8 @@
         private FlowLayoutPanel salesPanel;
         private Label salesLabel;
         private Label quantityLabel;
+        private Panel panel1;
+        private Label label2;
+        private Button button100;
     }
 }

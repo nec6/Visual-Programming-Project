@@ -148,5 +148,10 @@ namespace restaurantPOS
                 salesPanel.Controls.Add(row);
             }
         }
+
+        private void button100_Click(object sender, EventArgs e)
+        {
+            ViewChanger.GoBack();
+        }
     }
 }
