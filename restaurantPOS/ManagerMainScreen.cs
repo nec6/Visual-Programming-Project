@@ -22,8 +22,8 @@ namespace restaurantPOS
             this.employeeID = employeeID;
             button1.Image = Properties.Resources.icons8_menu_64;
             button2.Image = Properties.Resources.icons8_employee_40;
-            button4.Image = Properties.Resources.icons8_report_48;
-            button3.Image = Properties.Resources.icons8_table_64;
+            button3.Image = Properties.Resources.icons8_report_48;
+            button4.Image = Properties.Resources.icons8_table_64;
         }
 
         private void ManagerMainScreen_Load(object sender, EventArgs e)

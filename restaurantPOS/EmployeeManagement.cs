@@ -20,7 +20,7 @@ namespace restaurantPOS
             lstEmployees.Columns.Add("Name", 300);
             lstEmployees.Columns.Add("Employee ID", 200);
             lstEmployees.Columns.Add("Role", 200);
-            lstEmployees.Columns.Add("Pay", 50);
+            lstEmployees.Columns.Add("Pay", 100);
             updateEmployees();
         }
 
@@ -51,7 +51,7 @@ namespace restaurantPOS
         private void updateEmployees()
         {
             lstEmployees.Items.Clear();
-            foreach(employee item in DatabaseHandler.GetAllEmployees())
+            foreach (employee item in DatabaseHandler.GetAllEmployees())
             {
                 ListViewItem listItem = new ListViewItem(item.name);
                 listItem.SubItems.Add(item.employeeID.ToString());
@@ -59,6 +59,15 @@ namespace restaurantPOS
                 listItem.SubItems.Add(item.pay.ToString());
                 lstEmployees.Items.Add(listItem);
             }
+        }
+
+        private void removeEmployeeButton_Click(object sender, EventArgs e)
+        {
+            ListViewItem item = lstEmployees.SelectedItems[0];
+            int employeeToRemove = Convert.ToInt32(item.SubItems[1].Text);
+
+            DatabaseHandler.removeEmployee(employeeToRemove);
+            updateEmployees();
         }
     }
 }

@@ -40,6 +40,7 @@
             Current = new GroupBox();
             lstEmployees = new ListView();
             addEmployee = new Button();
+            removeEmployeeButton = new Button();
             groupBox1.SuspendLayout();
             Current.SuspendLayout();
             SuspendLayout();
@@ -168,7 +169,7 @@
             // 
             // addEmployee
             // 
-            addEmployee.Location = new Point(1481, 1158);
+            addEmployee.Location = new Point(1628, 670);
             addEmployee.Name = "addEmployee";
             addEmployee.Size = new Size(150, 46);
             addEmployee.TabIndex = 8;
@@ -176,10 +177,21 @@
             addEmployee.UseVisualStyleBackColor = true;
             addEmployee.Click += addEmployee_Click;
             // 
+            // removeEmployeeButton
+            // 
+            removeEmployeeButton.Location = new Point(919, 988);
+            removeEmployeeButton.Name = "removeEmployeeButton";
+            removeEmployeeButton.Size = new Size(150, 46);
+            removeEmployeeButton.TabIndex = 9;
+            removeEmployeeButton.Text = "Remove";
+            removeEmployeeButton.UseVisualStyleBackColor = true;
+            removeEmployeeButton.Click += removeEmployeeButton_Click;
+            // 
             // EmployeeManagement
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(removeEmployeeButton);
             Controls.Add(addEmployee);
             Controls.Add(Current);
             Controls.Add(groupBox1);
@@ -207,5 +219,6 @@
         private GroupBox Current;
         private ListView lstEmployees;
         private Button addEmployee;
+        private Button removeEmployeeButton;
     }
 }
