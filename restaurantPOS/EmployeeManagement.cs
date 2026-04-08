@@ -17,6 +17,11 @@ namespace restaurantPOS
         {
             InitializeComponent();
             this.employeeID = employeeID;
+            lstEmployees.Columns.Add("Name", 300);
+            lstEmployees.Columns.Add("Employee ID", 200);
+            lstEmployees.Columns.Add("Role", 200);
+            lstEmployees.Columns.Add("Pay", 50);
+            updateEmployees();
         }
 
         private void addEmployee_Click(object sender, EventArgs e) // CHANGE TO CHECK IF EMPLOYEE WITH ID ALREADY EXISTS
@@ -24,6 +29,7 @@ namespace restaurantPOS
             int idToAdd = Convert.ToInt32(tbID.Text);
             string nameToAdd = tbName.Text;
             string employeeTypeToAdd = null;
+            decimal pay = Convert.ToDecimal(tbPay.Text);
             if (radioButton1.Checked)
             {
                 employeeTypeToAdd = "Employee";
@@ -38,7 +44,21 @@ namespace restaurantPOS
                 return;
             }
 
-            DatabaseHandler.addEmployee(idToAdd, nameToAdd, employeeTypeToAdd);
+            DatabaseHandler.addEmployee(idToAdd, nameToAdd, employeeTypeToAdd, pay);
+            updateEmployees();
+        }
+
+        private void updateEmployees()
+        {
+            lstEmployees.Items.Clear();
+            foreach(employee item in DatabaseHandler.GetAllEmployees())
+            {
+                ListViewItem listItem = new ListViewItem(item.name);
+                listItem.SubItems.Add(item.employeeID.ToString());
+                listItem.SubItems.Add(item.role);
+                listItem.SubItems.Add(item.pay.ToString());
+                lstEmployees.Items.Add(listItem);
+            }
         }
     }
 }

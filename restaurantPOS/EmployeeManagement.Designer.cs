@@ -124,7 +124,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(12, 151);
+            label2.Location = new Point(10, 145);
             label2.Margin = new Padding(5, 0, 5, 0);
             label2.Name = "label2";
             label2.Size = new Size(55, 32);
@@ -134,7 +134,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 66);
+            label1.Location = new Point(12, 71);
             label1.Margin = new Padding(5, 0, 5, 0);
             label1.Name = "label1";
             label1.Size = new Size(83, 32);
@@ -157,6 +157,7 @@
             // 
             lstEmployees.FullRowSelect = true;
             lstEmployees.GridLines = true;
+            lstEmployees.HeaderStyle = ColumnHeaderStyle.Nonclickable;
             lstEmployees.Location = new Point(37, 42);
             lstEmployees.Margin = new Padding(5);
             lstEmployees.Name = "lstEmployees";

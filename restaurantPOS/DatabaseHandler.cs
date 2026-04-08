@@ -25,6 +25,14 @@ namespace restaurantPOS
         }
     }
 
+    public struct employee
+    {
+        public string name;
+        public int employeeID;
+        public string role;
+        public decimal pay;
+    }
+
     public struct itemSales
     {
         public string menuItem;
@@ -47,7 +55,8 @@ namespace restaurantPOS
                 CREATE TABLE IF NOT EXISTS Employees (
                     employeeID INTEGER PRIMARY KEY,
                     name TEXT NOT NULL,
-                    role TEXT NOT NULL
+                    role TEXT NOT NULL,
+                    pay DECIMAL(5, 2) NOT NULL
                     );
                 ";
             command.ExecuteNonQuery();
@@ -102,17 +111,18 @@ namespace restaurantPOS
             command.ExecuteNonQuery();
         }
 
-        public static void addEmployee(int employeeID, string name, string role)
+        public static void addEmployee(int employeeID, string name, string role, decimal pay)
         {
             using var connection = new SqliteConnection("Data Source=pos.db");
             connection.Open();
 
-            string sqlString = "INSERT INTO Employees VALUES (@id, @name, @role)";
+            string sqlString = "INSERT INTO Employees VALUES (@id, @name, @role, @pay)";
 
             using SqliteCommand command = new SqliteCommand(sqlString, connection);
             command.Parameters.AddWithValue("@id", employeeID);
             command.Parameters.AddWithValue("@name", name);
             command.Parameters.AddWithValue("@role", role);
+            command.Parameters.AddWithValue("@pay", pay);
 
             command.ExecuteNonQuery();
         }
@@ -491,6 +501,34 @@ namespace restaurantPOS
             int queryResult = Convert.ToInt32((long)command.ExecuteScalar());
 
             return queryResult;
+        }
+
+        public static List<employee> GetAllEmployees()
+        {
+            List<employee> employees = new List<employee>();
+
+            using var connection = new SqliteConnection("Data Source=pos.db");
+            connection.Open();
+
+            string sqlString = "SELECT employeeID, name, role, pay FROM Employees";
+
+            using SqliteCommand command = new SqliteCommand(sqlString, connection);
+            using var databaseReader = command.ExecuteReader();
+
+            while (databaseReader.Read())
+            {
+                employee employeeToAdd = new employee
+                {
+                    employeeID = Convert.ToInt32(databaseReader["employeeID"]),
+                    name = databaseReader["name"].ToString(),
+                    pay = Convert.ToDecimal(databaseReader["pay"]),
+                    role = databaseReader["role"].ToString()
+                };
+
+                employees.Add(employeeToAdd);
+            }
+
+            return employees;
         }
     }
 }
