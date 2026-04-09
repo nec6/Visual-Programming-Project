@@ -28,18 +28,214 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
+            Current = new GroupBox();
+            lstEmployees = new ListView();
+            groupBox1 = new GroupBox();
+            tbCat = new TextBox();
+            tbMods = new TextBox();
+            tbPrice = new TextBox();
+            tbName = new TextBox();
+            label4 = new Label();
+            label3 = new Label();
+            label2 = new Label();
+            label1 = new Label();
+            btnDel = new Button();
+            btnAdd = new Button();
+            exitButton = new Button();
+            Current.SuspendLayout();
+            groupBox1.SuspendLayout();
+            SuspendLayout();
+            // 
+            // Current
+            // 
+            Current.Controls.Add(lstEmployees);
+            Current.Location = new Point(20, 200);
+            Current.Margin = new Padding(5);
+            Current.Name = "Current";
+            Current.Padding = new Padding(5);
+            Current.Size = new Size(946, 747);
+            Current.TabIndex = 7;
+            Current.TabStop = false;
+            Current.Text = "Current Items";
+            // 
+            // lstEmployees
+            // 
+            lstEmployees.FullRowSelect = true;
+            lstEmployees.GridLines = true;
+            lstEmployees.Location = new Point(10, 42);
+            lstEmployees.Margin = new Padding(5);
+            lstEmployees.Name = "lstEmployees";
+            lstEmployees.Size = new Size(868, 679);
+            lstEmployees.TabIndex = 3;
+            lstEmployees.UseCompatibleStateImageBehavior = false;
+            lstEmployees.View = View.Details;
+            lstEmployees.SelectedIndexChanged += lstEmployees_SelectedIndexChanged;
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(tbCat);
+            groupBox1.Controls.Add(tbMods);
+            groupBox1.Controls.Add(tbPrice);
+            groupBox1.Controls.Add(tbName);
+            groupBox1.Controls.Add(label4);
+            groupBox1.Controls.Add(label3);
+            groupBox1.Controls.Add(label2);
+            groupBox1.Controls.Add(label1);
+            groupBox1.Location = new Point(1058, 242);
+            groupBox1.Margin = new Padding(5);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Padding = new Padding(5);
+            groupBox1.Size = new Size(406, 603);
+            groupBox1.TabIndex = 8;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Add Item";
+            // 
+            // tbCat
+            // 
+            tbCat.Location = new Point(154, 245);
+            tbCat.Margin = new Padding(5);
+            tbCat.Name = "tbCat";
+            tbCat.Size = new Size(84, 39);
+            tbCat.TabIndex = 10;
+            tbCat.TextChanged += tbCat_TextChanged;
+            // 
+            // tbMods
+            // 
+            tbMods.Location = new Point(154, 381);
+            tbMods.Margin = new Padding(5);
+            tbMods.Name = "tbMods";
+            tbMods.Size = new Size(201, 39);
+            tbMods.TabIndex = 7;
+            tbMods.TextChanged += tbMods_TextChanged;
+            // 
+            // tbPrice
+            // 
+            tbPrice.Location = new Point(154, 138);
+            tbPrice.Margin = new Padding(5);
+            tbPrice.Name = "tbPrice";
+            tbPrice.Size = new Size(201, 39);
+            tbPrice.TabIndex = 5;
+            tbPrice.TextChanged += tbPrice_TextChanged;
+            // 
+            // tbName
+            // 
+            tbName.Location = new Point(154, 64);
+            tbName.Margin = new Padding(5);
+            tbName.Name = "tbName";
+            tbName.Size = new Size(201, 39);
+            tbName.TabIndex = 4;
+            tbName.TextChanged += tbName_TextChanged;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(10, 386);
+            label4.Margin = new Padding(5, 0, 5, 0);
+            label4.Name = "label4";
+            label4.Size = new Size(120, 32);
+            label4.TabIndex = 3;
+            label4.Text = "Modifiers:";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(10, 245);
+            label3.Margin = new Padding(5, 0, 5, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(115, 32);
+            label3.TabIndex = 2;
+            label3.Text = "Category:";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(10, 149);
+            label2.Margin = new Padding(5, 0, 5, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(70, 32);
+            label2.TabIndex = 1;
+            label2.Text = "Price:";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(10, 64);
+            label1.Margin = new Padding(5, 0, 5, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(83, 32);
+            label1.TabIndex = 0;
+            label1.Text = "Name:";
+            // 
+            // btnDel
+            // 
+            btnDel.Location = new Point(135, 1101);
+            btnDel.Margin = new Padding(5);
+            btnDel.Name = "btnDel";
+            btnDel.Size = new Size(153, 46);
+            btnDel.TabIndex = 9;
+            btnDel.Text = "Delete";
+            btnDel.UseVisualStyleBackColor = true;
+            btnDel.Click += btnDel_Click;
+            // 
+            // btnAdd
+            // 
+            btnAdd.Location = new Point(748, 1101);
+            btnAdd.Margin = new Padding(5);
+            btnAdd.Name = "btnAdd";
+            btnAdd.Size = new Size(153, 46);
+            btnAdd.TabIndex = 10;
+            btnAdd.Text = "Add";
+            btnAdd.UseVisualStyleBackColor = true;
+            btnAdd.Click += button2_Click;
+            // 
+            // exitButton
+            // 
+            exitButton.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            exitButton.Image = Properties.Resources.icons8_sign_out_96;
+            exitButton.Location = new Point(2016, 1766);
+            exitButton.Name = "exitButton";
+            exitButton.Size = new Size(170, 170);
+            exitButton.TabIndex = 12;
+            exitButton.Text = "Exit";
+            exitButton.TextAlign = ContentAlignment.BottomCenter;
+            exitButton.UseVisualStyleBackColor = true;
+            exitButton.Click += exitButton_Click;
             // 
             // MenuManagement
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Name = "MenuManagement";
-            this.Size = new System.Drawing.Size(2048, 1536);
-            this.ResumeLayout(false);
+            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.Info;
+            Controls.Add(exitButton);
+            Controls.Add(btnAdd);
+            Controls.Add(btnDel);
+            Controls.Add(groupBox1);
+            Controls.Add(Current);
+            Name = "MenuManagement";
+            Size = new Size(2219, 1966);
+            Load += MenuManagement_Load;
+            Current.ResumeLayout(false);
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            ResumeLayout(false);
 
         }
 
         #endregion
+
+        private GroupBox Current;
+        private ListView lstEmployees;
+        private GroupBox groupBox1;
+        private TextBox tbCat;
+        private TextBox tbMods;
+        private TextBox tbPrice;
+        private TextBox tbName;
+        private Label label4;
+        private Label label3;
+        private Label label2;
+        private Label label1;
+        private Button btnDel;
+        private Button btnAdd;
+        private Button exitButton;
     }
 }

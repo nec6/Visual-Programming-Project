@@ -18,6 +18,7 @@ namespace restaurantPOS
         public decimal price;
         public int orderItemID;
         public string modifications;
+        public string category;
 
         public override string ToString()
         {
@@ -152,6 +153,19 @@ namespace restaurantPOS
             command.Parameters.AddWithValue("@category", category);
             command.Parameters.AddWithValue("@price", price);
             command.Parameters.AddWithValue("@liquorTax", liquorTax);
+
+            command.ExecuteNonQuery();
+        }
+
+        public static void removeMenuItem(int itemID)
+        {
+            using var connection = new SqliteConnection("Data Source=pos.db");
+            connection.Open();
+
+            string sqlString = "DELETE FROM MenuItems WHERE menuItemID=@id";
+
+            using SqliteCommand command = new SqliteCommand(sqlString, connection);
+            command.Parameters.AddWithValue("@id", itemID);
 
             command.ExecuteNonQuery();
         }
@@ -529,6 +543,34 @@ namespace restaurantPOS
             }
 
             return employees;
+        }
+
+        public static List<orderItem> GetAllMenuItems()
+        {
+            List<orderItem> menuItems = new List<orderItem>();
+
+            using var connection = new SqliteConnection("Data Source=pos.db");
+            connection.Open();
+
+            string sqlString = "SELECT menuItemID, itemName, category, price FROM MenuItems";
+
+            using SqliteCommand command = new SqliteCommand(sqlString, connection);
+            using var databaseReader = command.ExecuteReader();
+
+            while (databaseReader.Read())
+            {
+                orderItem itemToAdd = new orderItem
+                {
+                    itemName = databaseReader["itemName"].ToString(),
+                    orderItemID = Convert.ToInt32(databaseReader["menuItemID"]),
+                    category = databaseReader["category"].ToString(),
+                    price = Convert.ToDecimal(databaseReader["price"])
+                };
+
+                menuItems.Add(itemToAdd);
+            }
+
+            return menuItems;
         }
     }
 }
