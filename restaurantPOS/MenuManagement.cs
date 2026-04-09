@@ -55,7 +55,7 @@ namespace restaurantPOS
         private void btnDel_Click(object sender, EventArgs e)
         {
             if (lstEmployees.SelectedItems.Count == 0) // Do nothing if no item is selected
-            { 
+            {
                 return;
             }
 
@@ -122,6 +122,11 @@ namespace restaurantPOS
         private void exitButton_Click(object sender, EventArgs e)
         {
             ViewChanger.ChangeView(new LoginScreen());
+        }
+
+        private void managerMainButton_Click(object sender, EventArgs e)
+        {
+            ViewChanger.ChangeView(new ManagerMainScreen(employeeID));
         }
     }
 }

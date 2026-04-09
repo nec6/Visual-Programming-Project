@@ -45,6 +45,7 @@
             panel1 = new Panel();
             label5 = new Label();
             label6 = new Label();
+            managerMainButton = new Button();
             Current.SuspendLayout();
             groupBox1.SuspendLayout();
             panel1.SuspendLayout();
@@ -194,11 +195,12 @@
             // 
             // exitButton
             // 
+            exitButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             exitButton.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             exitButton.Image = Properties.Resources.icons8_sign_out_96;
-            exitButton.Location = new Point(2016, 1766);
+            exitButton.Location = new Point(1956, 1754);
             exitButton.Name = "exitButton";
-            exitButton.Size = new Size(170, 170);
+            exitButton.Size = new Size(216, 182);
             exitButton.TabIndex = 12;
             exitButton.Text = "Exit";
             exitButton.TextAlign = ContentAlignment.BottomCenter;
@@ -243,12 +245,28 @@
             label6.TabIndex = 0;
             label6.Text = "RESTAURANT POS";
             // 
+            // managerMainButton
+            // 
+            managerMainButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            managerMainButton.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            managerMainButton.Image = Properties.Resources.icons8_manager_100;
+            managerMainButton.ImageAlign = ContentAlignment.TopCenter;
+            managerMainButton.Location = new Point(1707, 1754);
+            managerMainButton.Name = "managerMainButton";
+            managerMainButton.Size = new Size(216, 182);
+            managerMainButton.TabIndex = 14;
+            managerMainButton.Text = "Manager Operations";
+            managerMainButton.TextAlign = ContentAlignment.BottomCenter;
+            managerMainButton.UseVisualStyleBackColor = true;
+            managerMainButton.Click += managerMainButton_Click;
+            // 
             // MenuManagement
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             BackColor = SystemColors.Info;
+            Controls.Add(managerMainButton);
             Controls.Add(panel1);
             Controls.Add(exitButton);
             Controls.Add(btnAdd);
@@ -286,5 +304,6 @@
         private Panel panel1;
         private Label label5;
         private Label label6;
+        private Button managerMainButton;
     }
 }

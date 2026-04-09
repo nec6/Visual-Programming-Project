@@ -12,10 +12,12 @@ namespace restaurantPOS
 {
     public partial class ReportsScreen : UserControl
     {
-        public ReportsScreen()
+        private int employeeID;
+        public ReportsScreen(int employeeID)
         {
             InitializeComponent();
             foodSalesButton_Click(foodSalesButton, EventArgs.Empty); // Used to load the sales by menu item when the reports screen is opened initially.
+            this.employeeID = employeeID;
         }
 
         private void exitButton_Click(object sender, EventArgs e)
@@ -147,6 +149,11 @@ namespace restaurantPOS
                 row.Controls.Add(salesLabel);
                 salesPanel.Controls.Add(row);
             }
+        }
+
+        private void managerMainButton_Click(object sender, EventArgs e)
+        {
+            ViewChanger.ChangeView(new ManagerMainScreen(employeeID));
         }
     }
 }

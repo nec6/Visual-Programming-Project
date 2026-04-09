@@ -80,5 +80,9 @@ namespace restaurantPOS
             ViewChanger.ChangeView(new LoginScreen());
         }
 
+        private void managerMainButton_Click(object sender, EventArgs e)
+        {
+            ViewChanger.ChangeView(new ManagerMainScreen(employeeID));
+        }
     }
 }

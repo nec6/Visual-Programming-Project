@@ -45,6 +45,7 @@
             panel1 = new Panel();
             label3 = new Label();
             label5 = new Label();
+            managerMainButton = new Button();
             groupBox1.SuspendLayout();
             Current.SuspendLayout();
             panel1.SuspendLayout();
@@ -60,11 +61,11 @@
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(label1);
-            groupBox1.Location = new Point(1372, 222);
+            groupBox1.Location = new Point(1382, 222);
             groupBox1.Margin = new Padding(5);
             groupBox1.Name = "groupBox1";
             groupBox1.Padding = new Padding(5);
-            groupBox1.Size = new Size(406, 414);
+            groupBox1.Size = new Size(396, 440);
             groupBox1.TabIndex = 6;
             groupBox1.TabStop = false;
             groupBox1.Text = "Add Employee";
@@ -194,11 +195,12 @@
             // 
             // button1
             // 
+            button1.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             button1.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button1.Image = Properties.Resources.icons8_sign_out_96;
-            button1.Location = new Point(2020, 1773);
+            button1.Location = new Point(1978, 1753);
             button1.Name = "button1";
-            button1.Size = new Size(170, 170);
+            button1.Size = new Size(216, 182);
             button1.TabIndex = 10;
             button1.Text = "Exit";
             button1.TextAlign = ContentAlignment.BottomCenter;
@@ -243,12 +245,28 @@
             label5.TabIndex = 0;
             label5.Text = "RESTAURANT POS";
             // 
+            // managerMainButton
+            // 
+            managerMainButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            managerMainButton.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            managerMainButton.Image = Properties.Resources.icons8_manager_100;
+            managerMainButton.ImageAlign = ContentAlignment.TopCenter;
+            managerMainButton.Location = new Point(1742, 1753);
+            managerMainButton.Name = "managerMainButton";
+            managerMainButton.Size = new Size(216, 182);
+            managerMainButton.TabIndex = 12;
+            managerMainButton.Text = "Manager Operations";
+            managerMainButton.TextAlign = ContentAlignment.BottomCenter;
+            managerMainButton.UseVisualStyleBackColor = true;
+            managerMainButton.Click += managerMainButton_Click;
+            // 
             // EmployeeManagement
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             BackColor = SystemColors.Info;
+            Controls.Add(managerMainButton);
             Controls.Add(panel1);
             Controls.Add(button1);
             Controls.Add(removeEmployeeButton);
@@ -286,5 +304,6 @@
         private Panel panel1;
         private Label label3;
         private Label label5;
+        private Button managerMainButton;
     }
 }

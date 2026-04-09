@@ -233,8 +233,7 @@ namespace restaurantPOS
             if (balanceDue > 0m)
             {
                 var popup = new balanceDueForm();
-                MessageBox.Show(balanceDue.ToString());
-                //popup.ShowDialog();
+                popup.ShowDialog();
                 return; // Do not close check if balance is still due after showing balance due form.
             }
             DatabaseHandler.CloseCheck(orderNum);

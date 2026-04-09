@@ -35,27 +35,34 @@
             salesPanel = new FlowLayoutPanel();
             salesLabel = new Label();
             quantityLabel = new Label();
+            managerMainButton = new Button();
             SuspendLayout();
             // 
             // foodSalesButton
             // 
-            foodSalesButton.Font = new Font("Arial", 13.875F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            foodSalesButton.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            foodSalesButton.Image = Properties.Resources.icons8_spoon_and_fork_96;
+            foodSalesButton.ImageAlign = ContentAlignment.TopCenter;
             foodSalesButton.Location = new Point(604, 1722);
             foodSalesButton.Name = "foodSalesButton";
             foodSalesButton.Size = new Size(352, 158);
             foodSalesButton.TabIndex = 0;
             foodSalesButton.Text = "Sales by Item";
+            foodSalesButton.TextAlign = ContentAlignment.BottomCenter;
             foodSalesButton.UseVisualStyleBackColor = true;
             foodSalesButton.Click += foodSalesButton_Click;
             // 
             // employeeSalesButton
             // 
-            employeeSalesButton.Font = new Font("Arial", 13.875F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            employeeSalesButton.Font = new Font("Arial", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            employeeSalesButton.Image = Properties.Resources.icons8_employees_96;
+            employeeSalesButton.ImageAlign = ContentAlignment.TopCenter;
             employeeSalesButton.Location = new Point(1213, 1722);
             employeeSalesButton.Name = "employeeSalesButton";
             employeeSalesButton.Size = new Size(352, 158);
             employeeSalesButton.TabIndex = 1;
             employeeSalesButton.Text = "Sales by Employee";
+            employeeSalesButton.TextAlign = ContentAlignment.BottomCenter;
             employeeSalesButton.UseVisualStyleBackColor = true;
             employeeSalesButton.Click += employeeSalesButton_Click;
             // 
@@ -63,9 +70,9 @@
             // 
             exitButton.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             exitButton.Image = Properties.Resources.icons8_sign_out_96;
-            exitButton.Location = new Point(1966, 1786);
+            exitButton.Location = new Point(1986, 1786);
             exitButton.Name = "exitButton";
-            exitButton.Size = new Size(238, 168);
+            exitButton.Size = new Size(216, 168);
             exitButton.TabIndex = 2;
             exitButton.Text = "Exit";
             exitButton.TextAlign = ContentAlignment.BottomCenter;
@@ -114,12 +121,28 @@
             quantityLabel.TabIndex = 6;
             quantityLabel.Text = "Quantity";
             // 
+            // managerMainButton
+            // 
+            managerMainButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            managerMainButton.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            managerMainButton.Image = Properties.Resources.icons8_manager_100;
+            managerMainButton.ImageAlign = ContentAlignment.TopCenter;
+            managerMainButton.Location = new Point(1741, 1786);
+            managerMainButton.Name = "managerMainButton";
+            managerMainButton.Size = new Size(216, 168);
+            managerMainButton.TabIndex = 7;
+            managerMainButton.Text = "Manager Operations";
+            managerMainButton.TextAlign = ContentAlignment.BottomCenter;
+            managerMainButton.UseVisualStyleBackColor = true;
+            managerMainButton.Click += managerMainButton_Click;
+            // 
             // ReportsScreen
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             BackColor = SystemColors.Info;
+            Controls.Add(managerMainButton);
             Controls.Add(quantityLabel);
             Controls.Add(salesLabel);
             Controls.Add(salesPanel);
@@ -144,5 +167,6 @@
         private FlowLayoutPanel salesPanel;
         private Label salesLabel;
         private Label quantityLabel;
+        private Button managerMainButton;
     }
 }

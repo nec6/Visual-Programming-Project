@@ -43,7 +43,7 @@ namespace restaurantPOS
 
         private void button3_Click(object sender, EventArgs e)
         {
-            ViewChanger.ChangeView(new ReportsScreen());
+            ViewChanger.ChangeView(new ReportsScreen(employeeID));
         }
 
         private void button2_Click(object sender, EventArgs e)

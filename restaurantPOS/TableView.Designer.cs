@@ -72,6 +72,7 @@
             tablesPanel.Controls.Add(button2);
             tablesPanel.Controls.Add(button1);
             tablesPanel.Location = new Point(3, 117);
+            tablesPanel.MinimumSize = new Size(500, 500);
             tablesPanel.Name = "tablesPanel";
             tablesPanel.Size = new Size(1935, 1849);
             tablesPanel.TabIndex = 0;
@@ -309,7 +310,7 @@
             managerMainButton.Name = "managerMainButton";
             managerMainButton.Size = new Size(216, 182);
             managerMainButton.TabIndex = 3;
-            managerMainButton.Text = "Manager Main Screen";
+            managerMainButton.Text = "Manager Operations";
             managerMainButton.TextAlign = ContentAlignment.BottomCenter;
             managerMainButton.UseVisualStyleBackColor = true;
             managerMainButton.Click += managerMainButton_Click;
