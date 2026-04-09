@@ -28,27 +28,48 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             screenHost = new Panel();
+            imageList1 = new ImageList(components);
             SuspendLayout();
             // 
             // screenHost
             // 
             screenHost.Dock = DockStyle.Fill;
             screenHost.Location = new Point(0, 0);
-            screenHost.Margin = new Padding(2, 2, 2, 2);
+            screenHost.Margin = new Padding(3, 4, 3, 4);
             screenHost.Name = "screenHost";
-            screenHost.Size = new Size(1283, 844);
+            screenHost.Size = new Size(2219, 1966);
             screenHost.TabIndex = 0;
-            screenHost.Paint += screenHost_Paint;
+            // 
+            // imageList1
+            // 
+            imageList1.ColorDepth = ColorDepth.Depth32Bit;
+            imageList1.ImageStream = (ImageListStreamer)resources.GetObject("imageList1.ImageStream");
+            imageList1.TransparentColor = Color.Transparent;
+            imageList1.Images.SetKeyName(0, "Coke");
+            imageList1.Images.SetKeyName(1, "Sprite");
+            imageList1.Images.SetKeyName(2, "Coke Zero");
+            imageList1.Images.SetKeyName(3, "Dr. Pepper");
+            imageList1.Images.SetKeyName(4, "Root Beer");
+            imageList1.Images.SetKeyName(5, "Diet Coke");
+            imageList1.Images.SetKeyName(6, "Bud Light");
+            imageList1.Images.SetKeyName(7, "Modelo");
+            imageList1.Images.SetKeyName(8, "Miller Lite");
+            imageList1.Images.SetKeyName(9, "Guinness");
+            imageList1.Images.SetKeyName(10, "Stella Artois");
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1283, 844);
+            ClientSize = new Size(2219, 1966);
             Controls.Add(screenHost);
-            Margin = new Padding(2, 2, 2, 2);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
+            Margin = new Padding(3, 4, 3, 4);
             Name = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";
             Load += Form1_Load;
             ResumeLayout(false);
@@ -58,6 +79,7 @@
         #endregion
 
         private System.Windows.Forms.Panel screenHost;
+        protected internal ImageList imageList1;
     }
 }
 
