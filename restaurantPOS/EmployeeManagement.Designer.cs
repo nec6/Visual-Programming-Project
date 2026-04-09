@@ -34,6 +34,8 @@
             btnAdd = new Button();
             btnExit = new Button();
             groupBox1 = new GroupBox();
+            radioButton2 = new RadioButton();
+            radioButton1 = new RadioButton();
             tbMan = new TextBox();
             tbEmploy = new TextBox();
             label6 = new Label();
@@ -47,8 +49,6 @@
             label1 = new Label();
             Current = new GroupBox();
             lstEmployees = new ListView();
-            radioButton1 = new RadioButton();
-            radioButton2 = new RadioButton();
             groupBox1.SuspendLayout();
             Current.SuspendLayout();
             SuspendLayout();
@@ -122,11 +122,34 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Add Item";
             // 
+            // radioButton2
+            // 
+            radioButton2.AutoSize = true;
+            radioButton2.Location = new Point(87, 325);
+            radioButton2.Name = "radioButton2";
+            radioButton2.Size = new Size(89, 24);
+            radioButton2.TabIndex = 12;
+            radioButton2.TabStop = true;
+            radioButton2.Text = "Manager";
+            radioButton2.UseVisualStyleBackColor = true;
+            // 
+            // radioButton1
+            // 
+            radioButton1.AutoSize = true;
+            radioButton1.Location = new Point(87, 296);
+            radioButton1.Name = "radioButton1";
+            radioButton1.Size = new Size(96, 24);
+            radioButton1.TabIndex = 11;
+            radioButton1.TabStop = true;
+            radioButton1.Text = "Employee";
+            radioButton1.UseVisualStyleBackColor = true;
+            // 
             // tbMan
             // 
             tbMan.Font = new Font("Segoe UI Semibold", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             tbMan.Location = new Point(111, 176);
             tbMan.Name = "tbMan";
+            tbMan.ReadOnly = true;
             tbMan.Size = new Size(53, 38);
             tbMan.TabIndex = 10;
             // 
@@ -135,6 +158,7 @@
             tbEmploy.Font = new Font("Segoe UI Semibold", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             tbEmploy.Location = new Point(111, 123);
             tbEmploy.Name = "tbEmploy";
+            tbEmploy.ReadOnly = true;
             tbEmploy.Size = new Size(53, 38);
             tbEmploy.TabIndex = 6;
             tbEmploy.TextChanged += textBox3_TextChanged;
@@ -240,28 +264,6 @@
             lstEmployees.UseCompatibleStateImageBehavior = false;
             lstEmployees.View = View.Details;
             lstEmployees.SelectedIndexChanged += lstEmployees_SelectedIndexChanged;
-            // 
-            // radioButton1
-            // 
-            radioButton1.AutoSize = true;
-            radioButton1.Location = new Point(87, 296);
-            radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(96, 24);
-            radioButton1.TabIndex = 11;
-            radioButton1.TabStop = true;
-            radioButton1.Text = "Employee";
-            radioButton1.UseVisualStyleBackColor = true;
-            // 
-            // radioButton2
-            // 
-            radioButton2.AutoSize = true;
-            radioButton2.Location = new Point(87, 325);
-            radioButton2.Name = "radioButton2";
-            radioButton2.Size = new Size(89, 24);
-            radioButton2.TabIndex = 12;
-            radioButton2.TabStop = true;
-            radioButton2.Text = "Manager";
-            radioButton2.UseVisualStyleBackColor = true;
             // 
             // EmployeeManagement
             // 
