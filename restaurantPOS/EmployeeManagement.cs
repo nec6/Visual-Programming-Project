@@ -17,7 +17,7 @@ namespace restaurantPOS
         {
             InitializeComponent();
             this.employeeID = employeeID;
-            lstEmployees.Columns.Add("Name", 300);
+            lstEmployees.Columns.Add("Name", 368);
             lstEmployees.Columns.Add("Employee ID", 200);
             lstEmployees.Columns.Add("Role", 200);
             lstEmployees.Columns.Add("Pay", 100);
@@ -68,6 +68,11 @@ namespace restaurantPOS
 
             DatabaseHandler.removeEmployee(employeeToRemove);
             updateEmployees();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ViewChanger.ChangeView(new LoginScreen());
         }
     }
 }

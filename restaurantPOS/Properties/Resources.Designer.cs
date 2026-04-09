@@ -113,6 +113,16 @@ namespace restaurantPOS.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap icons8_sign_out_96 {
+            get {
+                object obj = ResourceManager.GetObject("icons8-sign-out-96", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap icons8_table_64 {
             get {
                 object obj = ResourceManager.GetObject("icons8-table-64", resourceCulture);

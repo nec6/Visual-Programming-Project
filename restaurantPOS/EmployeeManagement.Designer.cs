@@ -41,6 +41,7 @@
             lstEmployees = new ListView();
             addEmployee = new Button();
             removeEmployeeButton = new Button();
+            button1 = new Button();
             groupBox1.SuspendLayout();
             Current.SuspendLayout();
             SuspendLayout();
@@ -179,7 +180,7 @@
             // 
             // removeEmployeeButton
             // 
-            removeEmployeeButton.Location = new Point(919, 988);
+            removeEmployeeButton.Location = new Point(919, 977);
             removeEmployeeButton.Name = "removeEmployeeButton";
             removeEmployeeButton.Size = new Size(150, 46);
             removeEmployeeButton.TabIndex = 9;
@@ -187,10 +188,25 @@
             removeEmployeeButton.UseVisualStyleBackColor = true;
             removeEmployeeButton.Click += removeEmployeeButton_Click;
             // 
+            // button1
+            // 
+            button1.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.Image = Properties.Resources.icons8_sign_out_96;
+            button1.Location = new Point(2020, 1773);
+            button1.Name = "button1";
+            button1.Size = new Size(170, 170);
+            button1.TabIndex = 10;
+            button1.Text = "Exit";
+            button1.TextAlign = ContentAlignment.BottomCenter;
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // EmployeeManagement
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.Info;
+            Controls.Add(button1);
             Controls.Add(removeEmployeeButton);
             Controls.Add(addEmployee);
             Controls.Add(Current);
@@ -220,5 +236,6 @@
         private ListView lstEmployees;
         private Button addEmployee;
         private Button removeEmployeeButton;
+        private Button button1;
     }
 }

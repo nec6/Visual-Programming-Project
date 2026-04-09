@@ -62,11 +62,13 @@
             // exitButton
             // 
             exitButton.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            exitButton.Image = Properties.Resources.icons8_sign_out_96;
             exitButton.Location = new Point(1966, 1786);
             exitButton.Name = "exitButton";
             exitButton.Size = new Size(238, 168);
             exitButton.TabIndex = 2;
             exitButton.Text = "Exit";
+            exitButton.TextAlign = ContentAlignment.BottomCenter;
             exitButton.UseVisualStyleBackColor = true;
             exitButton.Click += exitButton_Click;
             // 
