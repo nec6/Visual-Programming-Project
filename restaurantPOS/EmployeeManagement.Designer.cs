@@ -42,8 +42,12 @@
             addEmployee = new Button();
             removeEmployeeButton = new Button();
             button1 = new Button();
+            panel1 = new Panel();
+            label3 = new Label();
+            label5 = new Label();
             groupBox1.SuspendLayout();
             Current.SuspendLayout();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox1
@@ -201,11 +205,50 @@
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
+            // panel1
+            // 
+            panel1.BackColor = Color.FromArgb(26, 26, 46);
+            panel1.Controls.Add(label3);
+            panel1.Controls.Add(label5);
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(6);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(2219, 107);
+            panel1.TabIndex = 11;
+            // 
+            // label3
+            // 
+            label3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            label3.AutoSize = true;
+            label3.BackColor = Color.Transparent;
+            label3.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.FromArgb(233, 69, 96);
+            label3.Location = new Point(3033, 28);
+            label3.Margin = new Padding(6, 0, 6, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(139, 36);
+            label3.TabIndex = 1;
+            label3.Text = "Manager";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Javanese Text", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.ForeColor = SystemColors.ButtonHighlight;
+            label5.Location = new Point(26, 19);
+            label5.Margin = new Padding(6, 0, 6, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(313, 69);
+            label5.TabIndex = 0;
+            label5.Text = "RESTAURANT POS";
+            // 
             // EmployeeManagement
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Info;
+            Controls.Add(panel1);
             Controls.Add(button1);
             Controls.Add(removeEmployeeButton);
             Controls.Add(addEmployee);
@@ -217,6 +260,8 @@
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             Current.ResumeLayout(false);
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
 
         }
@@ -237,5 +282,8 @@
         private Button addEmployee;
         private Button removeEmployeeButton;
         private Button button1;
+        private Panel panel1;
+        private Label label3;
+        private Label label5;
     }
 }

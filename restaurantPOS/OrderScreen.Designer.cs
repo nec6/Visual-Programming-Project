@@ -45,12 +45,17 @@
             balanceDueLabel = new Label();
             payButton = new Button();
             repeatButton = new Button();
+            panel1 = new Panel();
+            label3 = new Label();
+            label2 = new Label();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // button1
             // 
             button1.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             button1.Image = Properties.Resources.icons8_sign_out_96;
+            button1.ImageAlign = ContentAlignment.TopCenter;
             button1.Location = new Point(1976, 1782);
             button1.Margin = new Padding(3, 4, 3, 4);
             button1.Name = "button1";
@@ -66,36 +71,39 @@
             menuCategoryPanel.AutoScroll = true;
             menuCategoryPanel.BackColor = SystemColors.Control;
             menuCategoryPanel.FlowDirection = FlowDirection.TopDown;
-            menuCategoryPanel.Location = new Point(764, 130);
+            menuCategoryPanel.Location = new Point(764, 116);
             menuCategoryPanel.Name = "menuCategoryPanel";
-            menuCategoryPanel.Size = new Size(320, 1626);
+            menuCategoryPanel.Size = new Size(320, 1640);
             menuCategoryPanel.TabIndex = 1;
             menuCategoryPanel.WrapContents = false;
             // 
             // menuItemsPanel
             // 
             menuItemsPanel.BackColor = SystemColors.ControlLight;
-            menuItemsPanel.Location = new Point(1194, 130);
+            menuItemsPanel.Location = new Point(1194, 113);
             menuItemsPanel.Name = "menuItemsPanel";
-            menuItemsPanel.Size = new Size(972, 1626);
+            menuItemsPanel.Size = new Size(972, 1643);
             menuItemsPanel.TabIndex = 2;
             // 
             // viewTablesButton
             // 
             viewTablesButton.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            viewTablesButton.Image = Properties.Resources.smallTable;
+            viewTablesButton.ImageAlign = ContentAlignment.TopCenter;
             viewTablesButton.Location = new Point(1752, 1782);
             viewTablesButton.Margin = new Padding(3, 4, 3, 4);
             viewTablesButton.Name = "viewTablesButton";
             viewTablesButton.Size = new Size(190, 157);
             viewTablesButton.TabIndex = 4;
             viewTablesButton.Text = "View Tables";
+            viewTablesButton.TextAlign = ContentAlignment.BottomCenter;
             viewTablesButton.UseVisualStyleBackColor = true;
             viewTablesButton.Click += viewTablesButton_Click;
             // 
             // tableLabel
             // 
             tableLabel.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            tableLabel.Location = new Point(88, 44);
+            tableLabel.Location = new Point(88, 113);
             tableLabel.Name = "tableLabel";
             tableLabel.Size = new Size(550, 64);
             tableLabel.TabIndex = 6;
@@ -106,9 +114,9 @@
             // 
             orderedItemsListbox.BackColor = SystemColors.Window;
             orderedItemsListbox.FormattingEnabled = true;
-            orderedItemsListbox.Location = new Point(88, 130);
+            orderedItemsListbox.Location = new Point(88, 194);
             orderedItemsListbox.Name = "orderedItemsListbox";
-            orderedItemsListbox.Size = new Size(562, 1444);
+            orderedItemsListbox.Size = new Size(562, 1380);
             orderedItemsListbox.TabIndex = 7;
             // 
             // deleteItemButton
@@ -170,11 +178,14 @@
             // button2
             // 
             button2.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button2.Image = Properties.Resources.icons8_bill_96;
+            button2.ImageAlign = ContentAlignment.TopCenter;
             button2.Location = new Point(1300, 1782);
             button2.Name = "button2";
             button2.Size = new Size(191, 157);
             button2.TabIndex = 14;
             button2.Text = "Close Check";
+            button2.TextAlign = ContentAlignment.BottomCenter;
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
@@ -199,11 +210,14 @@
             // payButton
             // 
             payButton.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            payButton.Image = Properties.Resources.icons8_money_96;
+            payButton.ImageAlign = ContentAlignment.TopCenter;
             payButton.Location = new Point(1530, 1782);
             payButton.Name = "payButton";
             payButton.Size = new Size(191, 157);
             payButton.TabIndex = 17;
             payButton.Text = "Pay Check";
+            payButton.TextAlign = ContentAlignment.BottomCenter;
             payButton.UseVisualStyleBackColor = true;
             payButton.Click += payButton_Click;
             // 
@@ -217,11 +231,50 @@
             repeatButton.UseVisualStyleBackColor = true;
             repeatButton.Click += repeatButton_Click;
             // 
+            // panel1
+            // 
+            panel1.BackColor = Color.FromArgb(26, 26, 46);
+            panel1.Controls.Add(label3);
+            panel1.Controls.Add(label2);
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(6);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(2219, 107);
+            panel1.TabIndex = 19;
+            // 
+            // label3
+            // 
+            label3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            label3.AutoSize = true;
+            label3.BackColor = Color.Transparent;
+            label3.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.FromArgb(233, 69, 96);
+            label3.Location = new Point(3033, 28);
+            label3.Margin = new Padding(6, 0, 6, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(139, 36);
+            label3.TabIndex = 1;
+            label3.Text = "Manager";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Javanese Text", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label2.ForeColor = SystemColors.ButtonHighlight;
+            label2.Location = new Point(26, 19);
+            label2.Margin = new Padding(6, 0, 6, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(313, 69);
+            label2.TabIndex = 0;
+            label2.Text = "RESTAURANT POS";
+            // 
             // OrderScreen
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Info;
+            Controls.Add(panel1);
             Controls.Add(repeatButton);
             Controls.Add(payButton);
             Controls.Add(balanceDueLabel);
@@ -242,6 +295,8 @@
             Margin = new Padding(3, 4, 3, 4);
             Name = "OrderScreen";
             Size = new Size(2219, 1966);
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
 
@@ -266,5 +321,8 @@
         private Label balanceDueLabel;
         private Button payButton;
         private Button repeatButton;
+        private Panel panel1;
+        private Label label3;
+        private Label label2;
     }
 }

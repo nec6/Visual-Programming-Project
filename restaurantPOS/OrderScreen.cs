@@ -229,10 +229,11 @@ namespace restaurantPOS
 
         private void button2_Click(object sender, EventArgs e) // Closes check and goes back to table view.
         {
-            if (balanceDue > 0)
+            if (balanceDue > 0m)
             {
                 var popup = new balanceDueForm();
-                popup.ShowDialog();
+                MessageBox.Show(balanceDue.ToString());
+                //popup.ShowDialog();
                 return; // Do not close check if balance is still due after showing balance due form.
             }
             DatabaseHandler.CloseCheck(orderNum);

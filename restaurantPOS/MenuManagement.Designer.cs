@@ -42,8 +42,12 @@
             btnDel = new Button();
             btnAdd = new Button();
             exitButton = new Button();
+            panel1 = new Panel();
+            label5 = new Label();
+            label6 = new Label();
             Current.SuspendLayout();
             groupBox1.SuspendLayout();
+            panel1.SuspendLayout();
             SuspendLayout();
             // 
             // Current
@@ -201,11 +205,50 @@
             exitButton.UseVisualStyleBackColor = true;
             exitButton.Click += exitButton_Click;
             // 
+            // panel1
+            // 
+            panel1.BackColor = Color.FromArgb(26, 26, 46);
+            panel1.Controls.Add(label5);
+            panel1.Controls.Add(label6);
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(0, 0);
+            panel1.Margin = new Padding(6);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(2219, 107);
+            panel1.TabIndex = 13;
+            // 
+            // label5
+            // 
+            label5.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            label5.AutoSize = true;
+            label5.BackColor = Color.Transparent;
+            label5.Font = new Font("Microsoft Sans Serif", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label5.ForeColor = Color.FromArgb(233, 69, 96);
+            label5.Location = new Point(3033, 28);
+            label5.Margin = new Padding(6, 0, 6, 0);
+            label5.Name = "label5";
+            label5.Size = new Size(139, 36);
+            label5.TabIndex = 1;
+            label5.Text = "Manager";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Javanese Text", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label6.ForeColor = SystemColors.ButtonHighlight;
+            label6.Location = new Point(26, 19);
+            label6.Margin = new Padding(6, 0, 6, 0);
+            label6.Name = "label6";
+            label6.Size = new Size(313, 69);
+            label6.TabIndex = 0;
+            label6.Text = "RESTAURANT POS";
+            // 
             // MenuManagement
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.Info;
+            Controls.Add(panel1);
             Controls.Add(exitButton);
             Controls.Add(btnAdd);
             Controls.Add(btnDel);
@@ -217,6 +260,8 @@
             Current.ResumeLayout(false);
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
             ResumeLayout(false);
 
         }
@@ -237,5 +282,8 @@
         private Button btnDel;
         private Button btnAdd;
         private Button exitButton;
+        private Panel panel1;
+        private Label label5;
+        private Label label6;
     }
 }

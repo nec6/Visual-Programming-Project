@@ -74,5 +74,6 @@ namespace restaurantPOS
         {
             ViewChanger.ChangeView(new LoginScreen());
         }
+
     }
 }
