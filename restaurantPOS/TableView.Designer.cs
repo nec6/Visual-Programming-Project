@@ -55,6 +55,8 @@
             // 
             // tablesPanel
             // 
+            tablesPanel.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            tablesPanel.AutoScroll = true;
             tablesPanel.Controls.Add(button14);
             tablesPanel.Controls.Add(button13);
             tablesPanel.Controls.Add(button12);
@@ -273,6 +275,7 @@
             // 
             // employeeNameLabel
             // 
+            employeeNameLabel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             employeeNameLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point, 0);
             employeeNameLabel.Location = new Point(1941, 117);
             employeeNameLabel.Name = "employeeNameLabel";
@@ -283,6 +286,7 @@
             // 
             // exitButton
             // 
+            exitButton.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             exitButton.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             exitButton.Image = Properties.Resources.icons8_sign_out_96;
             exitButton.ImageAlign = ContentAlignment.TopCenter;
@@ -297,6 +301,7 @@
             // 
             // managerMainButton
             // 
+            managerMainButton.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             managerMainButton.Font = new Font("Arial", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             managerMainButton.Image = Properties.Resources.icons8_manager_100;
             managerMainButton.ImageAlign = ContentAlignment.TopCenter;
@@ -351,6 +356,7 @@
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoScroll = true;
             BackColor = SystemColors.Info;
             Controls.Add(panel1);
             Controls.Add(managerMainButton);

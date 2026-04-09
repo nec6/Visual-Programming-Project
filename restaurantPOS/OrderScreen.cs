@@ -52,7 +52,8 @@ namespace restaurantPOS
                     Width = 240,
                     Height = 120,
                     Margin = new Padding(20),
-                    Font = new Font("Arial", 12, FontStyle.Bold)
+                    Font = new Font("Arial", 12, FontStyle.Bold),
+                    Anchor = AnchorStyles.Right,
                 };
 
                 button.Click += CategoryButton_Click;

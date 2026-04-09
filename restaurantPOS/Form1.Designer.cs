@@ -36,6 +36,7 @@
             // 
             // screenHost
             // 
+            screenHost.AutoScroll = true;
             screenHost.Dock = DockStyle.Fill;
             screenHost.Location = new Point(0, 0);
             screenHost.Margin = new Padding(3, 4, 3, 4);
@@ -66,8 +67,8 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(2219, 1966);
             Controls.Add(screenHost);
-            FormBorderStyle = FormBorderStyle.FixedSingle;
             Margin = new Padding(3, 4, 3, 4);
+            MaximumSize = new Size(2245, 2037);
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Form1";

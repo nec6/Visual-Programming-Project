@@ -247,6 +247,7 @@
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoScroll = true;
             BackColor = SystemColors.Info;
             Controls.Add(panel1);
             Controls.Add(exitButton);
