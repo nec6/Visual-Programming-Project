@@ -63,6 +63,11 @@ namespace restaurantPOS
 
         private void removeEmployeeButton_Click(object sender, EventArgs e)
         {
+            if (lstEmployees.SelectedItems.Count == 0) // Do nothing if no employee is selected, prevents crash
+            {
+                return;
+            }
+
             ListViewItem item = lstEmployees.SelectedItems[0];
             int employeeToRemove = Convert.ToInt32(item.SubItems[1].Text);
 

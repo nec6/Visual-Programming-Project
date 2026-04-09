@@ -54,10 +54,8 @@ namespace restaurantPOS
         // ── Delete button (btnDel) ──
         private void btnDel_Click(object sender, EventArgs e)
         {
-            if (lstEmployees.SelectedItems.Count == 0)
-            {
-                MessageBox.Show("Please select an item to delete.", "No Selection",
-                                MessageBoxButtons.OK, MessageBoxIcon.Information);
+            if (lstEmployees.SelectedItems.Count == 0) // Do nothing if no item is selected
+            { 
                 return;
             }
 
