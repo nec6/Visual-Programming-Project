@@ -84,7 +84,8 @@ namespace restaurantPOS
             }
             else
             {
-                MessageBox.Show("Invalid ID");
+                var popup = new InvalidIDForm();
+                popup.ShowDialog();
                 EmployeeID.Clear();
             }
         }
