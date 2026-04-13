@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace restaurantPOS
 {
@@ -24,12 +25,20 @@ namespace restaurantPOS
             updateEmployees();
         }
 
-        private void addEmployee_Click(object sender, EventArgs e) // CHANGE TO CHECK IF EMPLOYEE WITH ID ALREADY EXISTS
+        private void addEmployee_Click(object sender, EventArgs e) // CHANGE TO CHECK IF EMPLOYEE WITH ID ALREADY EXISTS ALSO ADD VALIDATION FOR PAY AND ID TO BE NUMBERS
         {
-            int idToAdd = Convert.ToInt32(tbID.Text);
+            string idToAdd = tbID.Text;
             string nameToAdd = tbName.Text;
             string employeeTypeToAdd = null;
-            decimal pay = Convert.ToDecimal(tbPay.Text);
+            string pay = tbPay.Text;
+
+            if (string.IsNullOrEmpty(idToAdd) || string.IsNullOrEmpty(nameToAdd) || string.IsNullOrEmpty(pay))
+            {
+                var popup = new employeeManagementPopup();
+                popup.ShowDialog();
+                return;
+            }
+
             if (radioButton1.Checked)
             {
                 employeeTypeToAdd = "Employee";
@@ -40,11 +49,12 @@ namespace restaurantPOS
             }
             else
             {
-                MessageBox.Show("Please select an employee type.");
+                var popup = new selectEmployeeTypePopup();
+                popup.ShowDialog();
                 return;
             }
 
-            DatabaseHandler.addEmployee(idToAdd, nameToAdd, employeeTypeToAdd, pay);
+            DatabaseHandler.addEmployee(Convert.ToInt32(idToAdd), nameToAdd, employeeTypeToAdd, Convert.ToDecimal(pay));
             updateEmployees();
         }
 

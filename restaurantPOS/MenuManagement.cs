@@ -27,17 +27,17 @@ namespace restaurantPOS
             string category = tbCat.Text.Trim();
             string modifiers = tbMods.Text.Trim();
 
-            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(price))
+            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(price) || string.IsNullOrEmpty(category))
             {
-                MessageBox.Show("Name and Price are required.", "Validation",
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                var popup = new menuManagementPopup();
+                popup.ShowDialog();
                 return;
             }
 
             if (!decimal.TryParse(price, out decimal parsedPrice))
             {
-                MessageBox.Show("Price must be a valid number.", "Validation",
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                var popup = new invalidMenuPricePopup();
+                popup.ShowDialog();
                 return;
             }
 
@@ -83,6 +83,8 @@ namespace restaurantPOS
             lstEmployees.FullRowSelect = true;
             lstEmployees.GridLines = true;
             lstEmployees.MultiSelect = false;
+
+            lstEmployees.Columns.Clear();
 
             lstEmployees.Columns.Add("Items", 150);
             lstEmployees.Columns.Add("Price", 100);
