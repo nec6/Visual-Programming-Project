@@ -54,6 +54,10 @@ namespace restaurantPOS
         private void button12_Click(object sender, EventArgs e)
         {
             string enteredID = EmployeeID.Text.Trim();
+            if (string.IsNullOrEmpty(enteredID))
+            {
+                return; // Ignore empty input
+            }
             int idInteger = Convert.ToInt32(enteredID);
 
             string employeeType = null;
@@ -80,7 +84,8 @@ namespace restaurantPOS
             }
             else
             {
-                MessageBox.Show("Invalid ID");
+                var popup = new InvalidIDForm();
+                popup.ShowDialog();
                 EmployeeID.Clear();
             }
         }

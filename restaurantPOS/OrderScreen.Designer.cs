@@ -79,6 +79,7 @@
             // 
             // menuItemsPanel
             // 
+            menuItemsPanel.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             menuItemsPanel.BackColor = SystemColors.ControlLight;
             menuItemsPanel.Location = new Point(1194, 113);
             menuItemsPanel.Name = "menuItemsPanel";
@@ -167,7 +168,6 @@
             // 
             // subtotalLabel
             // 
-            subtotalLabel.Anchor = AnchorStyles.Right;
             subtotalLabel.Location = new Point(156, 1603);
             subtotalLabel.Name = "subtotalLabel";
             subtotalLabel.Size = new Size(500, 32);
@@ -273,6 +273,7 @@
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoScroll = true;
             BackColor = SystemColors.Info;
             Controls.Add(panel1);
             Controls.Add(repeatButton);

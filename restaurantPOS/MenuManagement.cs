@@ -12,9 +12,11 @@ namespace restaurantPOS
 {
     public partial class MenuManagement : UserControl
     {
-        public MenuManagement(int employeeID = 0)
+        private int employeeID;
+        public MenuManagement(int employeeID)
         {
             InitializeComponent();
+            this.employeeID = employeeID;
         }
 
         // ── Add button (button2) ──
@@ -25,25 +27,22 @@ namespace restaurantPOS
             string category = tbCat.Text.Trim();
             string modifiers = tbMods.Text.Trim();
 
-            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(price))
+            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(price) || string.IsNullOrEmpty(category))
             {
-                MessageBox.Show("Name and Price are required.", "Validation",
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                var popup = new menuManagementPopup();
+                popup.ShowDialog();
                 return;
             }
 
             if (!decimal.TryParse(price, out decimal parsedPrice))
             {
-                MessageBox.Show("Price must be a valid number.", "Validation",
-                                MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                var popup = new invalidMenuPricePopup();
+                popup.ShowDialog();
                 return;
             }
 
-            ListViewItem item = new ListViewItem(name);
-            item.SubItems.Add(parsedPrice.ToString("F2"));
-            item.SubItems.Add(category);
-            item.SubItems.Add(modifiers);
-            lstEmployees.Items.Add(item);
+            DatabaseHandler.addMenuItem(name, category, Convert.ToDecimal(parsedPrice), false);
+            MenuManagement_Load(null, null); // Refresh the ListView
 
             tbName.Clear();
             tbPrice.Clear();
@@ -55,10 +54,8 @@ namespace restaurantPOS
         // ── Delete button (btnDel) ──
         private void btnDel_Click(object sender, EventArgs e)
         {
-            if (lstEmployees.SelectedItems.Count == 0)
+            if (lstEmployees.SelectedItems.Count == 0) // Do nothing if no item is selected
             {
-                MessageBox.Show("Please select an item to delete.", "No Selection",
-                                MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -70,21 +67,14 @@ namespace restaurantPOS
 
             if (confirm == DialogResult.Yes)
             {
-                lstEmployees.SelectedItems[0].Remove();
+                ListViewItem item = lstEmployees.SelectedItems[0];
+                int itemToRemove = Convert.ToInt32(item.SubItems[3].Text);
+
+                DatabaseHandler.removeMenuItem(itemToRemove);
+                MenuManagement_Load(null, null); // Refresh the ListView
             }
         }
 
-        // ── Exit button (button3) ──
-        private void button3_Click(object sender, EventArgs e)
-        {
-            Form parentForm = this.ParentForm;
-            if (parentForm != null)
-            {
-                LoginScreen loginScreen = new LoginScreen();
-                loginScreen.Show();
-                parentForm.Close();
-            }
-        }
 
         // ── Form Load: set up ListView columns ──
         private void MenuManagement_Load(object sender, EventArgs e)
@@ -94,10 +84,22 @@ namespace restaurantPOS
             lstEmployees.GridLines = true;
             lstEmployees.MultiSelect = false;
 
+            lstEmployees.Columns.Clear();
+
             lstEmployees.Columns.Add("Items", 150);
             lstEmployees.Columns.Add("Price", 100);
             lstEmployees.Columns.Add("Category", 120);
-            lstEmployees.Columns.Add("Modifiers", 180);
+            lstEmployees.Columns.Add("Item ID", 180);
+
+            lstEmployees.Items.Clear();
+            foreach (orderItem item in DatabaseHandler.GetAllMenuItems())
+            {
+                ListViewItem listItem = new ListViewItem(item.itemName);
+                listItem.SubItems.Add(item.price.ToString());
+                listItem.SubItems.Add(item.category);
+                listItem.SubItems.Add(item.orderItemID.ToString());
+                lstEmployees.Items.Add(listItem);
+            }
         }
 
         // ── ListView selection: populate form fields ──
@@ -118,5 +120,15 @@ namespace restaurantPOS
         private void tbPrice_TextChanged(object sender, EventArgs e) { }
         private void tbCat_TextChanged(object sender, EventArgs e) { }
         private void tbMods_TextChanged(object sender, EventArgs e) { }
+
+        private void exitButton_Click(object sender, EventArgs e)
+        {
+            ViewChanger.ChangeView(new LoginScreen());
+        }
+
+        private void managerMainButton_Click(object sender, EventArgs e)
+        {
+            ViewChanger.ChangeView(new ManagerMainScreen(employeeID));
+        }
     }
 }

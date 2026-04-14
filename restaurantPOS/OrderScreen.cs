@@ -52,7 +52,8 @@ namespace restaurantPOS
                     Width = 240,
                     Height = 120,
                     Margin = new Padding(20),
-                    Font = new Font("Arial", 12, FontStyle.Bold)
+                    Font = new Font("Arial", 12, FontStyle.Bold),
+                    Anchor = AnchorStyles.Right,
                 };
 
                 button.Click += CategoryButton_Click;
@@ -232,8 +233,7 @@ namespace restaurantPOS
             if (balanceDue > 0m)
             {
                 var popup = new balanceDueForm();
-                MessageBox.Show(balanceDue.ToString());
-                //popup.ShowDialog();
+                popup.ShowDialog();
                 return; // Do not close check if balance is still due after showing balance due form.
             }
             DatabaseHandler.CloseCheck(orderNum);
