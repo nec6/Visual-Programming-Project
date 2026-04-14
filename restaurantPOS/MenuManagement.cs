@@ -12,7 +12,7 @@ namespace restaurantPOS
 {
     public partial class MenuManagement : UserControl
     {
-        public MenuManagement()
+        public MenuManagement(int employeeID = 0)
         {
             InitializeComponent();
         }
