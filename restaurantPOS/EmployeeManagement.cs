@@ -25,14 +25,14 @@ namespace restaurantPOS
             updateEmployees();
         }
 
-        private void addEmployee_Click(object sender, EventArgs e) // CHANGE TO CHECK IF EMPLOYEE WITH ID ALREADY EXISTS ALSO ADD VALIDATION FOR PAY AND ID TO BE NUMBERS
+        private void addEmployee_Click(object sender, EventArgs e) // CHANGE TO CHECK IF EMPLOYEE WITH ID ALREADY EXISTS
         {
             string idToAdd = tbID.Text;
             string nameToAdd = tbName.Text;
             string employeeTypeToAdd = null;
             string pay = tbPay.Text;
 
-            if (string.IsNullOrEmpty(idToAdd) || string.IsNullOrEmpty(nameToAdd) || string.IsNullOrEmpty(pay))
+            if (string.IsNullOrEmpty(idToAdd) || string.IsNullOrEmpty(nameToAdd) || string.IsNullOrEmpty(pay) || (!int.TryParse(idToAdd, out _) || !decimal.TryParse(pay, out _)))
             {
                 var popup = new employeeManagementPopup();
                 popup.ShowDialog();
@@ -50,6 +50,13 @@ namespace restaurantPOS
             else
             {
                 var popup = new selectEmployeeTypePopup();
+                popup.ShowDialog();
+                return;
+            }
+
+            if (DatabaseHandler.EmployeeExists(Convert.ToInt32(idToAdd)) == 1)
+            {
+                var popup = new employeeIDExistsPopup();
                 popup.ShowDialog();
                 return;
             }
